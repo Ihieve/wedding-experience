@@ -48,3 +48,213 @@ a {
 button {
   font: inherit;
 }
+
+/* Subtle animated ambient backdrop: emerald, gold, coffee brown and ivory. */
+.wedding-ambient-background {
+  background:
+    radial-gradient(ellipse at 15% 18%, rgba(15, 107, 91, 0.13), transparent 34%),
+    radial-gradient(ellipse at 88% 78%, rgba(201, 162, 39, 0.15), transparent 31%),
+    radial-gradient(ellipse at 50% 45%, rgba(255, 255, 255, 0.96), transparent 65%),
+    linear-gradient(135deg, #fffdf8 0%, #fff8e9 48%, #fffdf8 100%);
+  background-size: 140% 140%, 150% 150%, 120% 120%, 220% 220%;
+  animation: wedding-background-breathe 18s ease-in-out infinite alternate;
+  contain: paint;
+}
+
+.wedding-glow {
+  position: absolute;
+  width: clamp(16rem, 36vw, 34rem);
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  filter: blur(58px);
+  opacity: 0.65;
+  will-change: transform, opacity;
+  mix-blend-mode: multiply;
+}
+
+.wedding-glow-emerald {
+  left: -12rem;
+  top: 4%;
+  background: radial-gradient(circle, rgba(15, 107, 91, 0.2), rgba(15, 107, 91, 0));
+  animation: wedding-drift-emerald 15s ease-in-out infinite alternate, wedding-glow-pulse 8s ease-in-out infinite;
+}
+
+.wedding-glow-gold {
+  right: -12rem;
+  top: 24%;
+  background: radial-gradient(circle, rgba(201, 162, 39, 0.2), rgba(201, 162, 39, 0));
+  animation: wedding-drift-gold 17s ease-in-out infinite alternate, wedding-glow-pulse 10s ease-in-out infinite reverse;
+}
+
+.wedding-glow-coffee {
+  left: 28%;
+  bottom: -20rem;
+  background: radial-gradient(circle, rgba(75, 46, 32, 0.1), rgba(75, 46, 32, 0));
+  animation: wedding-drift-coffee 20s ease-in-out infinite alternate, wedding-glow-pulse 12s ease-in-out infinite;
+}
+
+.wedding-orbit {
+  position: absolute;
+  width: min(76vw, 58rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(201, 162, 39, 0.2);
+  box-shadow: 0 0 60px rgba(201, 162, 39, 0.035), inset 0 0 60px rgba(15, 107, 91, 0.025);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wedding-orbit-one {
+  animation: wedding-orbit 90s linear infinite;
+}
+
+.wedding-orbit-two {
+  width: min(58vw, 42rem);
+  border-color: rgba(15, 107, 91, 0.1);
+  animation: wedding-orbit-reverse 110s linear infinite;
+}
+
+.wedding-spark {
+  position: absolute;
+  color: #c9a227;
+  opacity: 0;
+  text-shadow: 0 0 14px rgba(201, 162, 39, 0.24);
+  animation: wedding-twinkle 5.5s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.wedding-spark-one { left: 12%; top: 22%; font-size: 1rem; animation-delay: 0s; }
+.wedding-spark-two { left: 78%; top: 18%; font-size: 1.35rem; animation-delay: 1.3s; }
+.wedding-spark-three { left: 88%; top: 64%; font-size: 0.9rem; animation-delay: 2.1s; }
+.wedding-spark-four { left: 23%; top: 77%; font-size: 1.25rem; animation-delay: 3.2s; }
+.wedding-spark-five { left: 57%; top: 88%; font-size: 0.8rem; animation-delay: 4.1s; }
+.wedding-spark-six { left: 42%; top: 10%; font-size: 1rem; animation-delay: 5s; }
+
+@keyframes wedding-drift-emerald {
+  from { transform: translate3d(0, -2%, 0) scale(0.92); }
+  to { transform: translate3d(14vw, 18vh, 0) scale(1.12); }
+}
+
+@keyframes wedding-drift-gold {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-16vw, 12vh, 0) scale(0.86); }
+}
+
+@keyframes wedding-drift-coffee {
+  from { transform: translate3d(-4vw, 0, 0) scale(0.9); }
+  to { transform: translate3d(12vw, -16vh, 0) scale(1.1); }
+}
+
+@keyframes wedding-orbit {
+  from { rotate: 0deg; }
+  to { rotate: 360deg; }
+}
+
+@keyframes wedding-orbit-reverse {
+  from { rotate: 360deg; }
+  to { rotate: 0deg; }
+}
+
+@keyframes wedding-twinkle {
+  0%, 100% { opacity: 0; transform: translateY(8px) scale(0.75) rotate(0deg); }
+  35%, 60% { opacity: 0.55; transform: translateY(-8px) scale(1) rotate(18deg); }
+}
+
+
+.wedding-spark-seven { left: 67%; top: 36%; font-size: 0.8rem; animation-delay: 0.7s; }
+.wedding-spark-eight { left: 34%; top: 63%; font-size: 1.1rem; animation-delay: 2.8s; }
+.wedding-spark-nine { left: 7%; top: 53%; font-size: 0.75rem; animation-delay: 1.8s; }
+.wedding-spark-ten { left: 94%; top: 42%; font-size: 1.05rem; animation-delay: 3.7s; }
+
+.wedding-light-sweep {
+  position: absolute;
+  inset: -35% auto -35% -45%;
+  width: 22%;
+  pointer-events: none;
+  opacity: 0;
+  transform: rotate(18deg);
+  background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.055), rgba(255, 255, 255, 0.32), rgba(15, 107, 91, 0.035), transparent);
+  filter: blur(8px);
+  animation: wedding-light-pass 18s ease-in-out infinite;
+}
+.wedding-light-sweep-two {
+  width: 14%;
+  animation-delay: 8s;
+  animation-duration: 22s;
+  background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.08), transparent);
+}
+
+.wedding-petal {
+  position: absolute;
+  top: -8%;
+  width: 10px;
+  height: 16px;
+  border-radius: 90% 10% 90% 10%;
+  background: linear-gradient(145deg, rgba(255,255,255,.95), rgba(201,162,39,.35));
+  box-shadow: 0 2px 8px rgba(75, 46, 32, .08);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: wedding-petal-fall 17s linear infinite;
+}
+.wedding-petal-one { left: 12%; animation-delay: 1s; animation-duration: 18s; }
+.wedding-petal-two { left: 29%; width: 7px; height: 12px; animation-delay: 6s; animation-duration: 21s; }
+.wedding-petal-three { left: 47%; animation-delay: 10s; animation-duration: 19s; }
+.wedding-petal-four { left: 64%; width: 8px; height: 13px; animation-delay: 3s; animation-duration: 23s; }
+.wedding-petal-five { left: 81%; animation-delay: 8s; animation-duration: 20s; }
+.wedding-petal-six { left: 92%; width: 7px; height: 12px; animation-delay: 13s; animation-duration: 22s; }
+
+.wedding-dust {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: #c9a227;
+  box-shadow: 0 0 12px 3px rgba(201, 162, 39, .22);
+  opacity: 0;
+  animation: wedding-dust-float 9s ease-in-out infinite;
+}
+.wedding-dust-one { left: 18%; top: 38%; animation-delay: 0s; }
+.wedding-dust-two { left: 74%; top: 29%; animation-delay: 2s; }
+.wedding-dust-three { left: 83%; top: 73%; animation-delay: 4s; }
+.wedding-dust-four { left: 36%; top: 82%; animation-delay: 1s; }
+.wedding-dust-five { left: 57%; top: 15%; animation-delay: 5s; }
+.wedding-dust-six { left: 9%; top: 68%; animation-delay: 3s; }
+
+@keyframes wedding-background-breathe {
+  0% { background-position: 0% 0%, 100% 100%, 50% 40%, 0% 50%; }
+  100% { background-position: 35% 30%, 70% 55%, 40% 65%, 100% 50%; }
+}
+@keyframes wedding-glow-pulse {
+  0%, 100% { opacity: .42; }
+  50% { opacity: .8; }
+}
+@keyframes wedding-light-pass {
+  0%, 12% { left: -45%; opacity: 0; }
+  20% { opacity: .75; }
+  58% { opacity: .45; }
+  78%, 100% { left: 130%; opacity: 0; }
+}
+@keyframes wedding-petal-fall {
+  0% { transform: translate3d(0, -8vh, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: .55; }
+  45% { transform: translate3d(5vw, 48vh, 0) rotate(190deg); opacity: .5; }
+  80% { opacity: .35; }
+  100% { transform: translate3d(-3vw, 115vh, 0) rotate(420deg); opacity: 0; }
+}
+@keyframes wedding-dust-float {
+  0%, 100% { opacity: 0; transform: translate3d(0, 12px, 0) scale(.6); }
+  40%, 65% { opacity: .75; transform: translate3d(10px, -18px, 0) scale(1.25); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wedding-ambient-background,
+  .wedding-glow,
+  .wedding-orbit,
+  .wedding-spark,
+  .wedding-light-sweep,
+  .wedding-petal,
+  .wedding-dust {
+    animation: none !important;
+  }
+}

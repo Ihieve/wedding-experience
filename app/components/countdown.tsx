@@ -36,12 +36,12 @@ function TimeBox({
   return (
     <div className="flex flex-col items-center">
       <div className="flex h-[72px] w-[72px] items-center justify-center border border-[#C9A227]/40 bg-[#FFFDF8] shadow-[0_8px_25px_rgba(74,44,36,0.06)] sm:h-20 sm:w-20">
-        <span className="font-serif text-2xl text-[#4A2C24] sm:text-3xl">
+        <span className="font-serif text-2xl text-[#4B2E20] sm:text-3xl">
           {String(value).padStart(2, "0")}
         </span>
       </div>
 
-      <span className="mt-3 text-[8px] uppercase tracking-[0.25em] text-[#4A2C24]/50">
+      <span className="mt-3 text-[8px] uppercase tracking-[0.25em] text-[#4B2E20]/50">
         {label}
       </span>
     </div>
@@ -60,7 +60,7 @@ export default function Countdown() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-[#E8D8C3] px-5 py-20 sm:px-8 sm:py-24">
+    <section className="relative overflow-hidden bg-[#FFFDF8] px-5 py-20 sm:px-8 sm:py-24">
       {/* Decorative elements */}
       <div className="pointer-events-none absolute inset-0">
         {/* Top gold line */}
@@ -83,7 +83,7 @@ export default function Countdown() {
           ✦
         </span>
 
-        <span className="absolute right-[12%] bottom-[30%] text-sm text-[#0F6B5B]/40">
+        <span className="absolute right-[12%] bottom-[30%] text-sm text-[#064E3B]/40">
           ✦
         </span>
       </div>
@@ -96,7 +96,7 @@ export default function Countdown() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-[9px] uppercase tracking-[0.45em] text-[#0F6B5B] sm:text-[10px]"
+          className="text-[9px] uppercase tracking-[0.45em] text-[#064E3B] sm:text-[10px]"
         >
           The big day
         </motion.p>
@@ -107,7 +107,7 @@ export default function Countdown() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.15, duration: 0.6 }}
-          className="mt-5 font-serif text-3xl text-[#4A2C24] sm:text-4xl"
+          className="mt-5 font-serif text-3xl text-[#4B2E20] sm:text-4xl"
         >
           23 December 2026
         </motion.h2>
@@ -144,7 +144,7 @@ export default function Countdown() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.7, duration: 0.7 }}
-          className="mt-10 font-serif text-lg italic text-[#4A2C24]/65 sm:text-xl"
+          className="mt-10 font-serif text-lg italic text-[#4B2E20]/65 sm:text-xl"
         >
           Until we say "I do"
         </motion.p>
