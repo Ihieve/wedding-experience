@@ -4,3 +4,4 @@
 {"timestamp":"00:00:49.389","source":"Browser","level":"ERROR","message":"Gallery error: FirebaseError: Missing or insufficient permissions.\nFirebaseError: Missing or insufficient permissions. (app/components/WeddingGallery.tsx:41:17)"}
 {"timestamp":"00:00:49.390","source":"Server","level":"ERROR","message":"[browser] \"Gallery error:\" \"\\u001b[31mFirebaseError: Missing or insufficient permissions.\\u001b[39m\\n\\u001b[31mFirebaseError: Missing or insufficient permissions.\\u001b[39m\" \"\\u001b[2m(app/components/WeddingGallery.tsx:41:17)\\u001b[22m\""}
 {"timestamp":"00:06:54.892","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"00:34:39.034","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
