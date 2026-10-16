@@ -5,6 +5,7 @@ import { useState } from "react";
 import Countdown from "./components/countdown";
 import WeddingCamera from "./components/WeddingCamera";
 import WeddingGallery from "./components/WeddingGallery";
+import Guestbook from "./components/Guestbook";
 
 export default function Home() {
   const [isOpening, setIsOpening] = useState(false);
@@ -400,83 +401,247 @@ export default function Home() {
             className="relative min-h-screen bg-[#F8F0DF]"
           >
             {/* =================================================
-                INVITATION-INSPIRED HERO
+                HERO
             ================================================= */}
-            <header className="relative z-20 border-b border-[#C9A227]/35 bg-[#3A2118] text-[#FFF8E9]">
-              <nav aria-label="Main navigation" className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
-                <a href="#home" className="font-serif text-2xl tracking-tight text-[#E9C46A] sm:text-3xl" aria-label="Blessing and Gideon home">B<span className="text-[#FFF8E9]">&</span>G</a>
-                <div className="hidden items-center gap-7 text-[10px] uppercase tracking-[0.2em] md:flex">
-                  <a className="transition-colors hover:text-[#E9C46A]" href="#home">Home</a>
-                  <a className="transition-colors hover:text-[#E9C46A]" href="#story">Our Story</a>
-                  <a className="transition-colors hover:text-[#E9C46A]" href="#details">Details</a>
-                  <a className="transition-colors hover:text-[#E9C46A]" href="#gallery">Gallery</a>
-                  <a className="transition-colors hover:text-[#E9C46A]" href="#rsvp">RSVP</a>
-                </div>
-                <a href="#rsvp" className="rounded-full border border-[#C9A227]/80 px-4 py-2 text-[9px] uppercase tracking-[0.12em] text-[#FFF8E9] transition-colors hover:bg-[#C9A227] hover:text-[#3A2118] sm:px-5">♥ You’re invited</a>
-              </nav>
-            </header>
+            <section className="relative min-h-[100svh] overflow-hidden bg-[radial-gradient(ellipse_at_top,_rgba(201,162,39,0.12),_transparent_52%),linear-gradient(135deg,#fffaf0_0%,#f5ead5_55%,#fffdf8_100%)]">
+              {/* Invitation-inspired double gold frame */}
+              <div aria-hidden="true" className="pointer-events-none absolute inset-3 z-0 border border-[#C9A227]/45 sm:inset-5" />
+              <div aria-hidden="true" className="pointer-events-none absolute inset-5 z-0 border border-[#4B2E20]/10 sm:inset-8" />
+              <div aria-hidden="true" className="pointer-events-none absolute -left-16 top-20 h-44 w-44 rounded-full border border-[#064E3B]/15 sm:h-64 sm:w-64" />
+              <div aria-hidden="true" className="pointer-events-none absolute -right-20 bottom-20 h-56 w-56 rounded-full border border-[#C9A227]/20 sm:h-80 sm:w-80" />
+              {/* Decorations */}
+              <div className="pointer-events-none absolute inset-0">
+                <div className="absolute left-4 top-4 h-24 w-24 border-l border-t border-[#C9A227]/30 sm:left-6 sm:top-6 sm:h-40 sm:w-40" />
 
-            <section id="home" className="relative isolate overflow-hidden bg-[radial-gradient(ellipse_at_15%_25%,rgba(6,78,59,0.10),transparent_35%),radial-gradient(ellipse_at_85%_80%,rgba(201,162,39,0.16),transparent_38%),linear-gradient(135deg,#fffaf0_0%,#f4e5cb_52%,#fffdf8_100%)]">
-              <div aria-hidden="true" className="pointer-events-none absolute inset-3 border border-[#C9A227]/45 sm:inset-5" />
-              <div aria-hidden="true" className="pointer-events-none absolute inset-5 border border-[#4B2E20]/10 sm:inset-8" />
-              <div aria-hidden="true" className="pointer-events-none -left-24 top-12 absolute h-64 w-64 rounded-full border border-[#064E3B]/20 sm:h-96 sm:w-96" />
-              <div aria-hidden="true" className="pointer-events-none absolute -right-20 bottom-0 h-72 w-72 rounded-full border border-[#C9A227]/25 sm:h-[28rem] sm:w-[28rem]" />
+                <div className="absolute right-4 top-4 h-24 w-24 border-r border-t border-[#C9A227]/30 sm:right-6 sm:top-6 sm:h-40 sm:w-40" />
 
-              <div className="relative mx-auto grid min-h-[calc(100svh-72px)] max-w-7xl items-center gap-10 px-7 py-14 sm:px-10 sm:py-16 lg:grid-cols-[1.08fr_.92fr] lg:gap-12 lg:px-14 lg:py-20">
-                <div className="relative z-10 text-center lg:text-left">
-                  <motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} className="text-[9px] uppercase tracking-[0.42em] text-[#064E3B] sm:text-[10px] sm:tracking-[0.5em]">Together with our families</motion.p>
-                  <div aria-hidden="true" className="mx-auto mt-5 flex max-w-[230px] items-center justify-center gap-3 lg:mx-0">
-                    <span className="h-px flex-1 bg-[#C9A227]"/><span className="font-serif text-2xl text-[#C9A227]">♧</span><span className="h-px flex-1 bg-[#C9A227]"/>
-                  </div>
-                  <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="mt-5 font-serif text-5xl leading-[.98] tracking-[-0.045em] text-[#3A2118] sm:text-6xl md:text-7xl xl:text-[5.4rem]">
-                    Blessing <span className="text-[#B9872D]">&</span><br className="hidden lg:block"/> Gideon
-                  </motion.h1>
-                  <motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }} className="mt-3 font-serif text-3xl italic leading-tight text-[#B9872D] sm:text-4xl md:text-5xl">Are Getting Married</motion.p>
-                  <p className="mx-auto mt-6 max-w-xl font-serif text-base italic leading-7 text-[#4B2E20]/85 sm:text-lg sm:leading-8 lg:mx-0">We have found our Blessing, and we are coming together as one. With grateful hearts and God’s grace, we invite you to share in this beautiful new beginning and celebrate this special journey of love with us.</p>
-                  <div className="mt-7 flex items-center justify-center gap-3 text-[9px] uppercase tracking-[0.25em] text-[#4B2E20]/75 lg:justify-start sm:text-[10px]">
-                    <span className="text-[#B9872D]">✦</span><span>Wednesday, 23 December 2026</span><span className="text-[#B9872D]">✦</span>
-                  </div>
-                  <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
-                    <a href="#details" className="inline-flex items-center justify-center gap-2 rounded-sm bg-[#B9872D] px-6 py-3.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-white shadow-[0_8px_22px_rgba(75,46,32,.13)] transition hover:bg-[#4B2E20]">⌑ Save the date</a>
-                    <a href="#details" className="inline-flex items-center justify-center gap-2 rounded-sm border border-[#B9872D]/80 bg-white/40 px-6 py-3.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-[#4B2E20] transition hover:bg-white/80">View wedding details ↓</a>
-                  </div>
-                  <div className="mt-8 flex flex-wrap items-center justify-center gap-2 text-[9px] uppercase tracking-[0.12em] text-[#4B2E20]/65 lg:justify-start sm:gap-3">
-                    <span className="rounded-full border border-[#C9A227]/40 bg-white/40 px-3 py-2">Mr & Mrs Gabriel Joseph</span><span className="text-[#B9872D]">&</span><span className="rounded-full border border-[#C9A227]/40 bg-white/40 px-3 py-2">Mr & Mrs Ihieve Sunday</span>
-                  </div>
-                </div>
+                <div className="absolute bottom-4 left-4 h-24 w-24 border-b border-l border-[#C9A227]/30 sm:bottom-6 sm:left-6 sm:h-40 sm:w-40" />
 
-                <motion.div initial={{ opacity: 0, y: 25, rotate: 1 }} animate={{ opacity: 1, y: 0, rotate: 0 }} transition={{ delay: 0.45, duration: 0.8 }} className="relative mx-auto w-full max-w-[440px] lg:max-w-[470px]">
-                  <div aria-hidden="true" className="absolute -inset-3 rounded-[3px] border border-[#C9A227]/70 sm:-inset-4" />
-                  <div className="absolute -inset-1 rounded-[3px] bg-[#3A2118] shadow-[0_25px_65px_rgba(58,33,24,.25)]" />
-                  <div className="relative overflow-hidden border-[5px] border-[#FFF8E9] bg-[#FFF8E9] p-1 sm:border-[7px] sm:p-1.5">
-                    <img src="/Blessing%20%26%20Gideon.jpeg" alt="Blessing Gabriel and Gideon Ihieve's wedding invitation" className="h-auto w-full" />
-                  </div>
-                  <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-[#C9A227]/60 bg-[#FFF8E9] px-5 py-2 font-serif text-xs italic text-[#4B2E20] shadow-md">A beautiful beginning · 23 December</div>
+                <div className="absolute bottom-4 right-4 h-24 w-24 border-b border-r border-[#C9A227]/30 sm:bottom-6 sm:right-6 sm:h-40 sm:w-40" />
+              </div>
+
+              <div className="relative flex min-h-[100svh] flex-col items-center justify-center px-5 text-center sm:px-6">
+                {/* Ring */}
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.7 }}
+                >
+                  <svg
+                    viewBox="0 0 64 64"
+                    className="h-12 w-12 text-[#C9A227] sm:h-14 sm:w-14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="32"
+                      cy="36"
+                      r="15"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                    />
+
+                    <path
+                      d="M24 21L28 14H36L40 21L32 29L24 21Z"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </motion.div>
+
+                {/* Welcome */}
+                <motion.p
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="mt-6 text-[9px] uppercase tracking-[0.4em] text-[#064E3B] sm:mt-8 sm:text-[10px] sm:tracking-[0.5em]"
+                >
+                  Together with our families
+                </motion.p>
+
+                {/* Names */}
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8 }}
+                  className="mt-5 max-w-4xl font-serif text-4xl leading-[1.1] text-[#4B2E20] sm:mt-7 sm:text-5xl md:text-7xl"
+                >
+                  Blessing Gabriel
+                  <span className="mx-2 text-[#C9A227] sm:mx-3">
+                    &
+                  </span>
+                  Gideon Ihieve
+                </motion.h1>
+
+                {/* SingOn */}
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1 }}
+                  className="mt-5 font-serif text-lg italic text-[#064E3B] sm:mt-6 sm:text-xl"
+                >
+                  Wedding Celebration
+                </motion.p>
+
+                <p className="mt-4 max-w-lg text-[9px] uppercase leading-6 tracking-[0.16em] text-[#4B2E20]/65 sm:text-[10px] sm:tracking-[0.22em]">
+                  Together with our families · Mr and Mrs Gabriel Joseph · Mr and Mrs Ihieve Sunday
+                </p>
+
+                {/* Divider */}
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ delay: 1.2, duration: 0.7 }}
+                  className="my-6 h-px w-16 bg-[#C9A227] sm:my-8 sm:w-24"
+                />
+
+                {/* Date */}
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.3 }}
+                  className="text-[9px] uppercase tracking-[0.3em] text-[#4B2E20]/60 sm:text-xs sm:tracking-[0.35em]"
+                >
+                  Wednesday, 23 December 2026
+                </motion.p>
+
+                {/* Message */}
+                <motion.p
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.5 }}
+                  className="mt-7 max-w-xs font-serif text-base leading-7 text-[#4B2E20]/60 sm:mt-10 sm:max-w-md sm:text-lg sm:leading-8"
+                >
+                  We have found our Blessing, and we are coming together as one. With grateful hearts and God’s grace, we invite you to share in this beautiful new beginning.
+                </motion.p>
+
+                {/* Scroll */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 2 }}
+                  className="absolute bottom-6 flex flex-col items-center sm:bottom-8"
+                >
+                  <span className="text-[7px] uppercase tracking-[0.35em] text-[#4B2E20]/40 sm:text-[8px] sm:tracking-[0.4em]">
+                    Scroll to explore
+                  </span>
+
+                  <motion.span
+                    animate={{ y: [0, 6, 0] }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                    }}
+                    className="mt-2 text-[#C9A227] sm:mt-3"
+                  >
+                    ↓
+                  </motion.span>
                 </motion.div>
               </div>
             </section>
 
-            {/* Latest invitation card */}
-            <section className="relative overflow-hidden border-y border-[#C9A227]/25 bg-[linear-gradient(135deg,#fffdf8_0%,#f7eddc_50%,#fffaf0_100%)] px-5 py-16 sm:py-20">
-              <div className="mx-auto max-w-2xl text-center">
-                <p className="text-[9px] uppercase tracking-[0.4em] text-[#064E3B]">The official invitation</p>
-                <h2 className="mt-3 font-serif text-3xl text-[#4B2E20] sm:text-4xl">A day to remember</h2>
-                <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-[#4B2E20]/65">We have found our Blessing, and we are coming together as one. With grateful hearts and God’s grace, we invite you to share in this beautiful new beginning.</p>
-                <div className="mx-auto mt-8 max-w-md overflow-hidden rounded-[2px] border border-[#C9A227]/70 bg-[#FFFDF8] p-2 shadow-[0_22px_55px_rgba(75,46,32,0.18)] ring-1 ring-[#C9A227]/15">
-                  <img src="/Blessing%20%26%20Gideon.jpeg" alt="Official wedding invitation for Blessing Gabriel and Gideon Ihieve, Wednesday 23 December 2026" className="h-auto w-full" />
-                </div>
-                <a href="/Blessing%20%26%20Gideon.pdf" download className="mt-6 inline-flex items-center justify-center rounded-sm bg-[#4B2E20] px-6 py-3 text-[9px] font-medium uppercase tracking-[0.25em] text-white transition-colors hover:bg-[#064E3B]">Download invitation PDF</a>
-                <div className="mx-auto mt-9 max-w-sm">
-                  <p className="text-[9px] uppercase tracking-[0.35em] text-[#4B2E20]/75">Color of the day</p>
-                  <div className="mt-4 flex items-center justify-center gap-3">
-                    {[{ name: "White", color: "#FFFDF8" }, { name: "Emerald Green", color: "#064E3B" }, { name: "Gold", color: "#C9A227" }, { name: "Coffee Brown", color: "#4B2E20" }].map((shade) => (
-                      <div key={shade.name} className="flex flex-col items-center gap-2">
-                        <span title={shade.name} className="h-8 w-8 rounded-full border border-[#4B2E20]/15 shadow-sm sm:h-9 sm:w-9" style={{ backgroundColor: shade.color }} />
-                        <span className="text-[8px] tracking-wide text-[#4B2E20]/65">{shade.name}</span>
-                      </div>
-                    ))}
+            {/* Official invitation — editorial layout inspired by the printed card */}
+            <section
+              id="invitation"
+              className="invitation-showcase relative isolate overflow-hidden border-y border-[#C9A227]/35 px-5 py-16 sm:px-8 sm:py-24 lg:py-28"
+            >
+              {/* Rich layered color and ornamental details */}
+              <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+                <div className="invitation-wash invitation-wash-emerald" />
+                <div className="invitation-wash invitation-wash-gold" />
+                <div className="invitation-wash invitation-wash-coffee" />
+                <div className="invitation-ornament invitation-ornament-left" />
+                <div className="invitation-ornament invitation-ornament-right" />
+                <span className="invitation-star invitation-star-one">✦</span>
+                <span className="invitation-star invitation-star-two">✧</span>
+                <span className="invitation-star invitation-star-three">✦</span>
+                <span className="invitation-star invitation-star-four">✧</span>
+                <span className="invitation-petal invitation-petal-one" />
+                <span className="invitation-petal invitation-petal-two" />
+                <span className="invitation-petal invitation-petal-three" />
+              </div>
+
+              <div className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+                {/* Welcome copy */}
+                <motion.div
+                  initial={{ opacity: 0, x: -24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 0.75, ease: "easeOut" }}
+                  className="relative mx-auto max-w-xl text-center lg:mx-0 lg:text-left"
+                >
+                  <div className="mb-5 flex items-center justify-center gap-3 lg:justify-start">
+                    <span className="h-px w-8 bg-[#C9A227]" />
+                    <p className="text-[9px] font-medium uppercase tracking-[0.38em] text-[#064E3B] sm:text-[10px]">The official invitation</p>
+                    <span className="h-px w-8 bg-[#C9A227] lg:hidden" />
                   </div>
-                </div>
+
+                  <h2 className="font-serif text-4xl leading-tight text-[#4B2E20] sm:text-5xl lg:text-6xl">
+                    A day to <span className="invitation-script text-[#A87520]">remember</span>
+                  </h2>
+                  <p className="mx-auto mt-5 max-w-lg text-sm leading-7 text-[#4B2E20]/75 sm:text-base sm:leading-8 lg:mx-0">
+                    Two hearts, one beautiful journey, and a lifetime of love ahead. With grateful hearts and God’s grace, we invite you to celebrate the beginning of our forever.
+                  </p>
+
+                  <div className="mx-auto my-7 flex max-w-xs items-center justify-center gap-3 lg:mx-0 lg:justify-start">
+                    <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[#C9A227]/80 to-[#C9A227]" />
+                    <span className="text-lg text-[#A87520]">❦</span>
+                    <span className="h-px flex-1 bg-gradient-to-l from-transparent via-[#C9A227]/80 to-[#C9A227]" />
+                  </div>
+
+                  <p className="font-serif text-xl italic text-[#4B2E20] sm:text-2xl">Blessing & Gideon</p>
+                  <p className="mt-2 text-[9px] uppercase tracking-[0.28em] text-[#064E3B] sm:text-[10px]">Wednesday · 23 December 2026 · Abuja, Nigeria</p>
+
+                  <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
+                    <a
+                      href="/Blessing%20%26%20Gideon.pdf"
+                      download
+                      className="inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-sm border border-[#4B2E20] bg-[#4B2E20] px-6 py-3 text-[9px] font-medium uppercase tracking-[0.22em] text-[#FFFDF8] shadow-[0_8px_22px_rgba(75,46,32,0.16)] transition duration-300 hover:-translate-y-0.5 hover:border-[#064E3B] hover:bg-[#064E3B] sm:w-auto"
+                    >
+                      <span aria-hidden="true">↓</span> Download invitation PDF
+                    </a>
+                    <a
+                      href="#wedding-details"
+                      className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-sm border border-[#C9A227]/80 bg-[#FFFDF8]/65 px-6 py-3 text-[9px] font-medium uppercase tracking-[0.22em] text-[#4B2E20] transition duration-300 hover:bg-[#C9A227]/15 sm:w-auto"
+                    >
+                      Explore the day <span aria-hidden="true">↗</span>
+                    </a>
+                  </div>
+
+                  <div className="mt-9 border-t border-[#C9A227]/35 pt-5">
+                    <p className="text-[9px] uppercase tracking-[0.3em] text-[#4B2E20]/70">The colors of our celebration</p>
+                    <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 lg:justify-start">
+                      {[{ name: "White", color: "#FFFDF8" }, { name: "Emerald", color: "#064E3B" }, { name: "Gold", color: "#C9A227" }, { name: "Coffee", color: "#4B2E20" }].map((shade) => (
+                        <div key={shade.name} className="flex items-center gap-2">
+                          <span title={shade.name} className="h-5 w-5 rounded-full border border-[#4B2E20]/20 shadow-sm" style={{ backgroundColor: shade.color }} />
+                          <span className="text-[9px] tracking-wide text-[#4B2E20]/75">{shade.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Invitation artwork */}
+                <motion.div
+                  initial={{ opacity: 0, y: 28, rotate: 1.2 }}
+                  whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.9, ease: "easeOut" }}
+                  className="relative mx-auto w-full max-w-[430px] lg:max-w-[470px]"
+                >
+                  <div aria-hidden="true" className="absolute -inset-3 rounded-[3px] border border-[#C9A227]/45 bg-[#C9A227]/10 sm:-inset-4" />
+                  <div aria-hidden="true" className="absolute -inset-6 rounded-[4px] border border-[#064E3B]/20" />
+                  <div className="invitation-card-frame relative rounded-[2px] border border-[#C9A227] bg-[#FFFDF8] p-2 shadow-[0_28px_75px_rgba(57,34,23,0.25)] sm:p-3">
+                    <img
+                      src="/Blessing%20%26%20Gideon.jpeg"
+                      alt="Official wedding invitation for Blessing Gabriel and Gideon Ihieve, Wednesday 23 December 2026"
+                      className="h-auto w-full"
+                    />
+                    <div aria-hidden="true" className="pointer-events-none absolute inset-2 border border-[#C9A227]/35 sm:inset-3" />
+                  </div>
+                  <p className="mt-5 text-center text-[9px] uppercase tracking-[0.28em] text-[#4B2E20]/65">A keepsake for our special day</p>
+                </motion.div>
               </div>
             </section>
 
@@ -486,7 +651,7 @@ export default function Home() {
 {/* =====================================================
     OUR STORY — COMING SOON
 ===================================================== */}
-<section id="story" className="relative overflow-hidden bg-[#FFFDF8] px-6 py-24">
+<section id="wedding-details" className="relative overflow-hidden bg-[#FFFDF8] px-6 py-24">
   {/* Decorative background */}
   <div className="pointer-events-none absolute inset-0">
     <div className="absolute left-0 top-16 h-32 w-32 rounded-full border border-[#C9A227]/20" />
@@ -614,7 +779,7 @@ export default function Home() {
 {/* =====================================================
     WEDDING DAY SCHEDULE
 ===================================================== */}
-<section id="details" className="relative overflow-hidden bg-[#FFFDF8] px-5 py-24">
+<section className="relative overflow-hidden bg-[#FFFDF8] px-5 py-24">
   {/* Decorative background */}
   <div className="pointer-events-none absolute inset-0">
     <div className="absolute left-0 top-20 h-40 w-40 rounded-full border border-[#C9A227]/20" />
@@ -983,7 +1148,7 @@ export default function Home() {
 {/* =====================================================
     #8 — WEDDING GALLERY
 ===================================================== */}
-<section id="gallery" className="relative overflow-hidden bg-[#FFFDF8] px-5 py-24">
+<section className="relative overflow-hidden bg-[#FFFDF8] px-5 py-24">
   {/* Decorative background */}
   <div className="pointer-events-none absolute inset-0">
     <div className="absolute left-[-80px] top-24 h-48 w-48 rounded-full border border-[#C9A227]/15" />
@@ -1230,104 +1395,13 @@ export default function Home() {
 </section>
 
 
-{/* =====================================================
-    #10 — DIGITAL GUESTBOOK
-===================================================== */}
-<section className="relative overflow-hidden bg-[#FFFDF8] px-5 py-24">
-  <div className="pointer-events-none absolute inset-0">
-    <div className="absolute -left-20 top-20 h-48 w-48 rounded-full border border-[#C9A227]/15" />
-    <div className="absolute -right-20 bottom-20 h-48 w-48 rounded-full border border-[#064E3B]/10" />
-  </div>
-
-  <div className="relative mx-auto max-w-xl">
-    <div className="text-center">
-      <p className="text-[9px] uppercase tracking-[0.45em] text-[#064E3B]">
-        Leave a little love
-      </p>
-
-      <h2 className="mt-4 font-serif text-4xl text-[#4B2E20] sm:text-5xl">
-        Guestbook
-      </h2>
-
-      <div className="mx-auto my-7 h-px w-16 bg-[#C9A227]" />
-
-      <p className="font-serif text-lg italic leading-7 text-[#4B2E20]/60">
-        Your words will become part of our
-        <br />
-        forever memories.
-      </p>
-    </div>
-
-    {/* Message preview */}
-    <div className="mt-12 space-y-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="rounded-sm bg-[#FFFDF8] p-6 shadow-[0_10px_30px_rgba(74,44,36,0.06)]"
-      >
-        <span className="text-[#C9A227]">“</span>
-
-        <p className="mt-2 font-serif text-lg italic leading-7 text-[#4B2E20]/70">
-          Wishing you both a lifetime filled with love,
-          laughter and beautiful memories.
-        </p>
-
-        <p className="mt-5 text-[9px] uppercase tracking-[0.25em] text-[#064E3B]">
-          — A loved one
-        </p>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.15 }}
-        className="rounded-sm bg-[#4B2E20] p-6 text-[#FFFDF8]"
-      >
-        <span className="text-[#C9A227]">“</span>
-
-        <p className="mt-2 font-serif text-lg italic leading-7 text-[#FFFDF8]/80">
-          May this new chapter be even more beautiful
-          than everything that came before it.
-        </p>
-
-        <p className="mt-5 text-[9px] uppercase tracking-[0.25em] text-[#C9A227]">
-          — With love
-        </p>
-      </motion.div>
-    </div>
-
-    {/* Leave message */}
-    <div className="mt-8 rounded-sm border border-[#C9A227]/25 bg-[#FFFDF8]/70 p-6 text-center">
-      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#4B2E20] text-xl text-[#C9A227]">
-        ♡
-      </div>
-
-      <h3 className="mt-4 font-serif text-2xl text-[#4B2E20]">
-        Leave a message
-      </h3>
-
-      <p className="mt-2 text-xs text-[#4B2E20]/50">
-        Tell us something we can read and remember forever.
-      </p>
-
-      <button
-        type="button"
-        disabled
-        className="mt-6 rounded-sm bg-[#4B2E20] px-7 py-3 text-[9px] uppercase tracking-[0.3em] text-[#FFFDF8]"
-      >
-        Coming Soon
-      </button>
-    </div>
-  </div>
-</section>
+<Guestbook />
 
 
 {/* =====================================================
     #11 — RSVP
 ===================================================== */}
-<section id="rsvp" className="relative overflow-hidden bg-[#FFFDF8] px-5 py-24">
+<section className="relative overflow-hidden bg-[#FFFDF8] px-5 py-24">
   <div className="relative mx-auto max-w-xl text-center">
     <p className="text-[9px] uppercase tracking-[0.45em] text-[#064E3B]">
       Will you join us?

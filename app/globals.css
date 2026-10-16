@@ -258,3 +258,164 @@ button {
     animation: none !important;
   }
 }
+/* Invitation showcase: richer wedding colors without sacrificing legibility. */
+.invitation-showcase {
+  background:
+    radial-gradient(ellipse at 8% 10%, rgba(15, 107, 91, 0.17), transparent 31%),
+    radial-gradient(ellipse at 93% 84%, rgba(75, 46, 32, 0.16), transparent 32%),
+    radial-gradient(ellipse at 53% 47%, rgba(255, 253, 248, 0.96), rgba(248, 237, 218, 0.72) 55%, rgba(232, 216, 195, 0.82) 100%);
+}
+
+.invitation-showcase::before,
+.invitation-showcase::after {
+  position: absolute;
+  z-index: -1;
+  width: clamp(12rem, 27vw, 27rem);
+  aspect-ratio: 1;
+  content: "";
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.invitation-showcase::before {
+  top: -48%;
+  left: -12%;
+  border: 1px solid rgba(201, 162, 39, 0.36);
+  box-shadow: 0 0 0 18px rgba(201, 162, 39, 0.045), 0 0 0 36px rgba(15, 107, 91, 0.035);
+}
+
+.invitation-showcase::after {
+  right: -13%;
+  bottom: -54%;
+  border: 1px solid rgba(15, 107, 91, 0.22);
+  box-shadow: 0 0 0 20px rgba(15, 107, 91, 0.035), 0 0 0 40px rgba(201, 162, 39, 0.045);
+}
+
+.invitation-wash {
+  position: absolute;
+  width: clamp(15rem, 36vw, 36rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(55px);
+  opacity: 0.5;
+  animation: invitation-wash-drift 19s ease-in-out infinite alternate;
+}
+
+.invitation-wash-emerald {
+  top: 8%;
+  left: -18%;
+  background: radial-gradient(circle, rgba(6, 78, 59, 0.25), transparent 68%);
+}
+
+.invitation-wash-gold {
+  top: 15%;
+  right: -18%;
+  background: radial-gradient(circle, rgba(201, 162, 39, 0.27), transparent 68%);
+  animation-delay: -7s;
+}
+
+.invitation-wash-coffee {
+  bottom: -45%;
+  left: 38%;
+  background: radial-gradient(circle, rgba(75, 46, 32, 0.15), transparent 68%);
+  animation-delay: -11s;
+}
+
+.invitation-ornament {
+  position: absolute;
+  top: 8%;
+  width: clamp(6rem, 12vw, 12rem);
+  height: 75%;
+  opacity: 0.65;
+  border-color: rgba(201, 162, 39, 0.32);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.invitation-ornament-left {
+  left: 1rem;
+  border-width: 0 0 0 1px;
+  border-radius: 50% 0 0 50%;
+  transform: rotate(8deg);
+}
+
+.invitation-ornament-right {
+  right: 1rem;
+  border-width: 0 1px 0 0;
+  border-radius: 0 50% 50% 0;
+  transform: rotate(-8deg);
+}
+
+.invitation-star {
+  position: absolute;
+  color: #a87520;
+  opacity: 0;
+  text-shadow: 0 0 14px rgba(201, 162, 39, 0.4);
+  animation: invitation-star-twinkle 5.8s ease-in-out infinite;
+}
+
+.invitation-star-one { top: 15%; left: 13%; animation-delay: 0s; }
+.invitation-star-two { top: 29%; right: 11%; font-size: 1.3rem; animation-delay: 1.6s; }
+.invitation-star-three { bottom: 18%; left: 20%; animation-delay: 2.7s; }
+.invitation-star-four { bottom: 25%; right: 18%; font-size: 1.25rem; animation-delay: 3.8s; }
+
+.invitation-petal {
+  position: absolute;
+  width: 12px;
+  height: 20px;
+  border: 1px solid rgba(168, 117, 32, 0.45);
+  border-radius: 90% 10% 90% 10%;
+  background: linear-gradient(145deg, rgba(255, 253, 248, 0.92), rgba(201, 162, 39, 0.32));
+  opacity: 0;
+  animation: invitation-petal-drift 14s ease-in-out infinite;
+}
+
+.invitation-petal-one { top: 18%; left: 7%; }
+.invitation-petal-two { top: 63%; right: 8%; animation-delay: -5s; transform: scale(0.8); }
+.invitation-petal-three { top: 83%; left: 40%; animation-delay: -9s; transform: scale(0.65); }
+
+.invitation-script {
+  font-style: italic;
+  font-weight: 400;
+  text-shadow: 0 1px 0 rgba(255, 253, 248, 0.6);
+}
+
+.invitation-card-frame {
+  transform: translateZ(0);
+  transition: box-shadow 350ms ease, transform 350ms ease;
+}
+
+.invitation-card-frame:hover {
+  transform: translateY(-4px) rotate(-0.3deg);
+  box-shadow: 0 34px 85px rgba(57, 34, 23, 0.3);
+}
+
+@keyframes invitation-wash-drift {
+  from { transform: translate3d(-1%, -2%, 0) scale(0.95); }
+  to { transform: translate3d(5%, 4%, 0) scale(1.08); }
+}
+
+@keyframes invitation-star-twinkle {
+  0%, 100% { opacity: 0; transform: translateY(5px) scale(0.75) rotate(0deg); }
+  35%, 60% { opacity: 0.7; transform: translateY(-6px) scale(1) rotate(16deg); }
+}
+
+@keyframes invitation-petal-drift {
+  0%, 100% { opacity: 0; transform: translate3d(0, 10px, 0) rotate(-15deg); }
+  30%, 70% { opacity: 0.65; transform: translate3d(18px, -12px, 0) rotate(30deg); }
+}
+
+@media (max-width: 640px) {
+  .invitation-ornament { opacity: 0.35; width: 3rem; }
+  .invitation-ornament-left { left: 0.25rem; }
+  .invitation-ornament-right { right: 0.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .invitation-wash,
+  .invitation-star,
+  .invitation-petal {
+    animation: none !important;
+  }
+  .invitation-card-frame { transition: none; }
+}
