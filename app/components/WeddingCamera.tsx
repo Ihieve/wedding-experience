@@ -75,7 +75,7 @@ export default function WeddingCamera() {
         type="button"
         onClick={openCamera}
         disabled={isUploading}
-        className="inline-flex items-center justify-center gap-3 rounded-sm bg-[#4B2E20] px-7 py-4 text-[9px] font-medium uppercase tracking-[0.3em] text-[#FFFDF8] transition-all duration-300 hover:bg-[#064E3B] disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex items-center justify-center gap-3 rounded-sm bg-[#4A2C24] px-7 py-4 text-[9px] font-medium uppercase tracking-[0.3em] text-[#FFFDF8] transition-all duration-300 hover:bg-[#0F6B5B] disabled:cursor-not-allowed disabled:opacity-60"
       >
         {isUploading ? (
           <>
@@ -91,7 +91,7 @@ export default function WeddingCamera() {
       </button>
 
       {uploaded && (
-        <p className="mt-4 text-xs text-[#064E3B]">
+        <p className="mt-4 text-xs text-[#0F6B5B]">
           ✦ Your photo has been added to the gallery.
         </p>
       )}

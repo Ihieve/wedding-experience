@@ -1,15 +1,34 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Countdown from "./components/countdown";
 import WeddingCamera from "./components/WeddingCamera";
 import WeddingGallery from "./components/WeddingGallery";
-import Guestbook from "./components/Guestbook";
+import WeddingMemories from "./components/WeddingMemories";
 
 export default function Home() {
   const [isOpening, setIsOpening] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
+
+  useEffect(() => {
+    try {
+      setIsDarkMode(window.localStorage.getItem("wedding-theme") === "dark");
+    } catch {
+      // Theme still works for the current session if storage is unavailable.
+    }
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.weddingTheme = isDarkMode ? "dark" : "light";
+    try {
+      window.localStorage.setItem("wedding-theme", isDarkMode ? "dark" : "light");
+    } catch {
+      // Ignore storage restrictions.
+    }
+  }, [isDarkMode]);
 
   const openInvitation = () => {
     if (isOpening) return;
@@ -22,9 +41,13 @@ export default function Home() {
   };
 
   return (
-    <main className="relative isolate min-h-screen overflow-hidden bg-[#FFFDF8] text-[#4B2E20]">
-      {/* Slow, elegant animated background in the wedding palette */}
+    <main className={`relative isolate min-h-screen overflow-hidden bg-[#FFFDF8] text-[#4B2E20] ${isDarkMode ? "dark-theme" : "light-theme"}`}>
+      {/* Full-screen wedding video background. Muted playback allows autoplay in modern browsers. */}
       <div aria-hidden="true" className="wedding-ambient-background pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <video className="wedding-background-video" autoPlay muted loop playsInline preload="auto" tabIndex={-1}>
+          <source src="/wedding-media/lv_0_20261028144344.mp4" type="video/mp4" />
+        </video>
+        <div className="wedding-video-wash" />
         <div className="wedding-glow wedding-glow-emerald" />
         <div className="wedding-glow wedding-glow-gold" />
         <div className="wedding-glow wedding-glow-coffee" />
@@ -36,8 +59,56 @@ export default function Home() {
         <span className="wedding-spark wedding-spark-four">✧</span>
         <span className="wedding-spark wedding-spark-five">✦</span>
         <span className="wedding-spark wedding-spark-six">✧</span>
+        <span className="wedding-spark wedding-spark-seven">✦</span>
+        <span className="wedding-spark wedding-spark-eight">✧</span>
+        <span className="wedding-spark wedding-spark-nine">✦</span>
+        <span className="wedding-spark wedding-spark-ten">✧</span>
+        <div className="wedding-light-sweep wedding-light-sweep-one" />
+        <div className="wedding-light-sweep wedding-light-sweep-two" />
+        <span className="wedding-petal wedding-petal-one" />
+        <span className="wedding-petal wedding-petal-two" />
+        <span className="wedding-petal wedding-petal-three" />
+        <span className="wedding-petal wedding-petal-four" />
+        <span className="wedding-petal wedding-petal-five" />
+        <span className="wedding-petal wedding-petal-six" />
+        <span className="wedding-dust wedding-dust-one" />
+        <span className="wedding-dust wedding-dust-two" />
+        <span className="wedding-dust wedding-dust-three" />
+        <span className="wedding-dust wedding-dust-four" />
+        <span className="wedding-dust wedding-dust-five" />
+        <span className="wedding-dust wedding-dust-six" />
       </div>
       <div className="relative z-10">
+      <button
+        type="button"
+        onClick={() => setIsDarkMode((current) => !current)}
+        aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+        aria-pressed={isDarkMode}
+        className="theme-toggle fixed right-3 top-3 z-[100] inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1.5 text-xs font-medium shadow-md backdrop-blur-md transition-all duration-300 sm:right-5 sm:top-5"
+      >
+        <span aria-hidden="true">{isDarkMode ? "☀" : "☾"}</span>
+        <span>{isDarkMode ? "Light mode" : "Dark mode"}</span>
+      </button>
+      <audio id="wedding-music" src="/wedding-media/perfect-instrumental.mp3" loop preload="none" onPlay={() => setIsMusicPlaying(true)} onPause={() => setIsMusicPlaying(false)} />
+      <button
+        type="button"
+        onClick={async () => {
+          const audio = document.getElementById("wedding-music") as HTMLAudioElement | null;
+          if (!audio) return;
+          if (audio.paused) {
+            try { await audio.play(); } catch (error) { console.error("Wedding music could not start:", error); }
+          } else {
+            audio.pause();
+          }
+        }}
+        aria-label={isMusicPlaying ? "Pause wedding music" : "Play wedding music"}
+        aria-pressed={isMusicPlaying}
+        title={isMusicPlaying ? "Pause music" : "Play wedding music"}
+        className="music-player fixed bottom-5 right-5 z-[100] inline-flex h-12 w-12 items-center justify-center rounded-full border shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 sm:bottom-6 sm:right-6"
+      >
+        <span aria-hidden="true" className="text-lg">{isMusicPlaying ? "Ⅱ" : "▶"}</span>
+        <span className="sr-only">{isMusicPlaying ? "Pause music" : "Play music"}</span>
+      </button>
       <AnimatePresence mode="wait">
         {!isOpened ? (
           /* =====================================================
@@ -398,24 +469,19 @@ export default function Home() {
               duration: 1.2,
               ease: "easeOut",
             }}
-            className="relative min-h-screen bg-[#F8F0DF]"
+            className="relative min-h-screen bg-transparent"
           >
             {/* =================================================
                 HERO
             ================================================= */}
-            <section className="relative min-h-[100svh] overflow-hidden bg-[radial-gradient(ellipse_at_top,_rgba(201,162,39,0.12),_transparent_52%),linear-gradient(135deg,#fffaf0_0%,#f5ead5_55%,#fffdf8_100%)]">
-              {/* Invitation-inspired double gold frame */}
-              <div aria-hidden="true" className="pointer-events-none absolute inset-3 z-0 border border-[#C9A227]/45 sm:inset-5" />
-              <div aria-hidden="true" className="pointer-events-none absolute inset-5 z-0 border border-[#4B2E20]/10 sm:inset-8" />
-              <div aria-hidden="true" className="pointer-events-none absolute -left-16 top-20 h-44 w-44 rounded-full border border-[#064E3B]/15 sm:h-64 sm:w-64" />
-              <div aria-hidden="true" className="pointer-events-none absolute -right-20 bottom-20 h-56 w-56 rounded-full border border-[#C9A227]/20 sm:h-80 sm:w-80" />
+            <section className="relative min-h-[100svh] overflow-hidden">
               {/* Decorations */}
               <div className="pointer-events-none absolute inset-0">
                 <div className="absolute left-4 top-4 h-24 w-24 border-l border-t border-[#C9A227]/30 sm:left-6 sm:top-6 sm:h-40 sm:w-40" />
 
                 <div className="absolute right-4 top-4 h-24 w-24 border-r border-t border-[#C9A227]/30 sm:right-6 sm:top-6 sm:h-40 sm:w-40" />
 
-                <div className="absolute bottom-4 left-4 h-24 w-24 border-b border-l border-[#C9A227]/30 sm:bottom-6 sm:left-6 sm:h-40 sm:w-40" />
+                <div className="absolute bottom-4 left-4 h-24 w-24 border-b border-l border-[#C9A227]/30 sm:bottom-6 sm:right-6 sm:h-40 sm:w-40" />
 
                 <div className="absolute bottom-4 right-4 h-24 w-24 border-b border-r border-[#C9A227]/30 sm:bottom-6 sm:right-6 sm:h-40 sm:w-40" />
               </div>
@@ -457,7 +523,7 @@ export default function Home() {
                   transition={{ delay: 0.6 }}
                   className="mt-6 text-[9px] uppercase tracking-[0.4em] text-[#064E3B] sm:mt-8 sm:text-[10px] sm:tracking-[0.5em]"
                 >
-                  Together with our families
+                  Welcome to our wedding
                 </motion.p>
 
                 {/* Names */}
@@ -513,7 +579,9 @@ export default function Home() {
                   transition={{ delay: 1.5 }}
                   className="mt-7 max-w-xs font-serif text-base leading-7 text-[#4B2E20]/60 sm:mt-10 sm:max-w-md sm:text-lg sm:leading-8"
                 >
-                  We have found our Blessing, and we are coming together as one. With grateful hearts and God’s grace, we invite you to share in this beautiful new beginning.
+                  Two hearts, one beautiful journey,
+                  <br />
+                  and a lifetime to share.
                 </motion.p>
 
                 {/* Scroll */}
@@ -541,107 +609,36 @@ export default function Home() {
               </div>
             </section>
 
-            {/* Official invitation — editorial layout inspired by the printed card */}
-            <section
-              id="invitation"
-              className="invitation-showcase relative isolate overflow-hidden border-y border-[#C9A227]/35 px-5 py-16 sm:px-8 sm:py-24 lg:py-28"
-            >
-              {/* Rich layered color and ornamental details */}
-              <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-                <div className="invitation-wash invitation-wash-emerald" />
-                <div className="invitation-wash invitation-wash-gold" />
-                <div className="invitation-wash invitation-wash-coffee" />
-                <div className="invitation-ornament invitation-ornament-left" />
-                <div className="invitation-ornament invitation-ornament-right" />
-                <span className="invitation-star invitation-star-one">✦</span>
-                <span className="invitation-star invitation-star-two">✧</span>
-                <span className="invitation-star invitation-star-three">✦</span>
-                <span className="invitation-star invitation-star-four">✧</span>
-                <span className="invitation-petal invitation-petal-one" />
-                <span className="invitation-petal invitation-petal-two" />
-                <span className="invitation-petal invitation-petal-three" />
+            {/* Full-bleed invitation experience: use the first Capture Our Moment video as the moving backdrop. */}
+            <section id="official-invitation" className="relative isolate flex min-h-[620px] items-center justify-center overflow-hidden px-5 py-20 sm:min-h-[760px] sm:py-24">
+              <div aria-hidden="true" className="absolute inset-0 -z-30 overflow-hidden bg-[#10251D]">
+                <video
+                  className="h-full w-full object-cover object-center"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  tabIndex={-1}
+                  poster="/Blessing%20%26%20Gideon.jpeg"
+                >
+                  <source src="/wedding-media/lv_0_20261028144344.mp4" type="video/mp4" />
+                </video>
               </div>
-
-              <div className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-                {/* Welcome copy */}
-                <motion.div
-                  initial={{ opacity: 0, x: -24 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.25 }}
-                  transition={{ duration: 0.75, ease: "easeOut" }}
-                  className="relative mx-auto max-w-xl text-center lg:mx-0 lg:text-left"
-                >
-                  <div className="mb-5 flex items-center justify-center gap-3 lg:justify-start">
-                    <span className="h-px w-8 bg-[#C9A227]" />
-                    <p className="text-[9px] font-medium uppercase tracking-[0.38em] text-[#064E3B] sm:text-[10px]">The official invitation</p>
-                    <span className="h-px w-8 bg-[#C9A227] lg:hidden" />
-                  </div>
-
-                  <h2 className="font-serif text-4xl leading-tight text-[#4B2E20] sm:text-5xl lg:text-6xl">
-                    A day to <span className="invitation-script text-[#A87520]">remember</span>
-                  </h2>
-                  <p className="mx-auto mt-5 max-w-lg text-sm leading-7 text-[#4B2E20]/75 sm:text-base sm:leading-8 lg:mx-0">
-                    Two hearts, one beautiful journey, and a lifetime of love ahead. With grateful hearts and God’s grace, we invite you to celebrate the beginning of our forever.
-                  </p>
-
-                  <div className="mx-auto my-7 flex max-w-xs items-center justify-center gap-3 lg:mx-0 lg:justify-start">
-                    <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[#C9A227]/80 to-[#C9A227]" />
-                    <span className="text-lg text-[#A87520]">❦</span>
-                    <span className="h-px flex-1 bg-gradient-to-l from-transparent via-[#C9A227]/80 to-[#C9A227]" />
-                  </div>
-
-                  <p className="font-serif text-xl italic text-[#4B2E20] sm:text-2xl">Blessing & Gideon</p>
-                  <p className="mt-2 text-[9px] uppercase tracking-[0.28em] text-[#064E3B] sm:text-[10px]">Wednesday · 23 December 2026 · Abuja, Nigeria</p>
-
-                  <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
-                    <a
-                      href="/Blessing%20%26%20Gideon.pdf"
-                      download
-                      className="inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-sm border border-[#4B2E20] bg-[#4B2E20] px-6 py-3 text-[9px] font-medium uppercase tracking-[0.22em] text-[#FFFDF8] shadow-[0_8px_22px_rgba(75,46,32,0.16)] transition duration-300 hover:-translate-y-0.5 hover:border-[#064E3B] hover:bg-[#064E3B] sm:w-auto"
-                    >
-                      <span aria-hidden="true">↓</span> Download invitation PDF
-                    </a>
-                    <a
-                      href="#wedding-details"
-                      className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-sm border border-[#C9A227]/80 bg-[#FFFDF8]/65 px-6 py-3 text-[9px] font-medium uppercase tracking-[0.22em] text-[#4B2E20] transition duration-300 hover:bg-[#C9A227]/15 sm:w-auto"
-                    >
-                      Explore the day <span aria-hidden="true">↗</span>
-                    </a>
-                  </div>
-
-                  <div className="mt-9 border-t border-[#C9A227]/35 pt-5">
-                    <p className="text-[9px] uppercase tracking-[0.3em] text-[#4B2E20]/70">The colors of our celebration</p>
-                    <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 lg:justify-start">
-                      {[{ name: "White", color: "#FFFDF8" }, { name: "Emerald", color: "#064E3B" }, { name: "Gold", color: "#C9A227" }, { name: "Coffee", color: "#4B2E20" }].map((shade) => (
-                        <div key={shade.name} className="flex items-center gap-2">
-                          <span title={shade.name} className="h-5 w-5 rounded-full border border-[#4B2E20]/20 shadow-sm" style={{ backgroundColor: shade.color }} />
-                          <span className="text-[9px] tracking-wide text-[#4B2E20]/75">{shade.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Invitation artwork */}
-                <motion.div
-                  initial={{ opacity: 0, y: 28, rotate: 1.2 }}
-                  whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.9, ease: "easeOut" }}
-                  className="relative mx-auto w-full max-w-[430px] lg:max-w-[470px]"
-                >
-                  <div aria-hidden="true" className="absolute -inset-3 rounded-[3px] border border-[#C9A227]/45 bg-[#C9A227]/10 sm:-inset-4" />
-                  <div aria-hidden="true" className="absolute -inset-6 rounded-[4px] border border-[#064E3B]/20" />
-                  <div className="invitation-card-frame relative rounded-[2px] border border-[#C9A227] bg-[#FFFDF8] p-2 shadow-[0_28px_75px_rgba(57,34,23,0.25)] sm:p-3">
-                    <img
-                      src="/Blessing%20%26%20Gideon.jpeg"
-                      alt="Official wedding invitation for Blessing Gabriel and Gideon Ihieve, Wednesday 23 December 2026"
-                      className="h-auto w-full"
-                    />
-                    <div aria-hidden="true" className="pointer-events-none absolute inset-2 border border-[#C9A227]/35 sm:inset-3" />
-                  </div>
-                  <p className="mt-5 text-center text-[9px] uppercase tracking-[0.28em] text-[#4B2E20]/65">A keepsake for our special day</p>
-                </motion.div>
+              <div aria-hidden="true" className="absolute inset-0 -z-20 bg-gradient-to-b from-[#FFF8E9]/82 via-[#FFF8E9]/68 to-[#FFF8E9]/86 dark:from-[#10251D]/82 dark:via-[#10251D]/66 dark:to-[#10251D]/88" />
+              <div aria-hidden="true" className="pointer-events-none absolute inset-4 border border-[#C9A227]/70 sm:inset-8" />
+              <div aria-hidden="true" className="pointer-events-none absolute inset-7 border border-[#C9A227]/30 sm:inset-12" />
+              <div className="relative mx-auto w-full max-w-4xl text-center">
+                <p className="text-[9px] uppercase tracking-[0.42em] text-[#064E3B] dark:text-[#D9C17A]">Together with our families</p>
+                <h2 className="mt-4 font-serif text-4xl leading-tight text-[#4B2E20] sm:text-6xl dark:text-[#FFF5DE]">Blessing Gabriel <span className="text-[#C9A227]">&amp;</span><br className="sm:hidden" /> Gideon Ihieve</h2>
+                <p className="mt-3 font-serif text-lg italic text-[#064E3B] sm:text-2xl dark:text-[#E7D6A2]">A day to remember</p>
+                <div className="mx-auto my-6 h-px w-24 bg-[#C9A227]" />
+                <div className="mx-auto max-w-2xl rounded-2xl border border-[#C9A227]/50 bg-[#FFFDF8]/65 px-6 py-7 shadow-2xl shadow-[#4B2E20]/10 backdrop-blur-sm dark:bg-[#10251D]/60 sm:px-10 sm:py-9">
+                  <p className="font-serif text-base leading-7 text-[#4B2E20]/90 sm:text-lg dark:text-[#FFF5DE]/90">We have found our Blessing, and we are coming together as one. With grateful hearts and God’s grace, we invite you to share in this beautiful new beginning.</p>
+                  <p className="mt-6 text-xs uppercase tracking-[0.3em] text-[#064E3B] dark:text-[#D9C17A]">Wednesday · 23 December 2026</p>
+                  <p className="mt-3 font-serif text-sm text-[#4B2E20]/80 dark:text-[#FFF5DE]/80">Church service at 9:00 AM · Reception follows immediately</p>
+                  <a href="/Blessing%20%26%20Gideon.pdf" download className="mt-8 inline-flex items-center justify-center rounded-sm border border-[#C9A227] bg-[#4B2E20] px-7 py-4 text-[10px] font-medium uppercase tracking-[0.25em] text-white shadow-lg transition-colors hover:bg-[#064E3B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C9A227]">Download invitation PDF</a>
+                </div>
               </div>
             </section>
 
@@ -651,7 +648,7 @@ export default function Home() {
 {/* =====================================================
     OUR STORY — COMING SOON
 ===================================================== */}
-<section id="wedding-details" className="relative overflow-hidden bg-[#FFFDF8] px-6 py-24">
+<section className="relative overflow-hidden bg-[#FFFDF8] px-6 py-24">
   {/* Decorative background */}
   <div className="pointer-events-none absolute inset-0">
     <div className="absolute left-0 top-16 h-32 w-32 rounded-full border border-[#C9A227]/20" />
@@ -1145,6 +1142,9 @@ export default function Home() {
   </div>
 </section>
 
+{/* Featured personal videos and photo collection */}
+<WeddingMemories />
+
 {/* =====================================================
     #8 — WEDDING GALLERY
 ===================================================== */}
@@ -1395,7 +1395,98 @@ export default function Home() {
 </section>
 
 
-<Guestbook />
+{/* =====================================================
+    #10 — DIGITAL GUESTBOOK
+===================================================== */}
+<section className="relative overflow-hidden bg-[#FFFDF8] px-5 py-24">
+  <div className="pointer-events-none absolute inset-0">
+    <div className="absolute -left-20 top-20 h-48 w-48 rounded-full border border-[#C9A227]/15" />
+    <div className="absolute -right-20 bottom-20 h-48 w-48 rounded-full border border-[#064E3B]/10" />
+  </div>
+
+  <div className="relative mx-auto max-w-xl">
+    <div className="text-center">
+      <p className="text-[9px] uppercase tracking-[0.45em] text-[#064E3B]">
+        Leave a little love
+      </p>
+
+      <h2 className="mt-4 font-serif text-4xl text-[#4B2E20] sm:text-5xl">
+        Guestbook
+      </h2>
+
+      <div className="mx-auto my-7 h-px w-16 bg-[#C9A227]" />
+
+      <p className="font-serif text-lg italic leading-7 text-[#4B2E20]/60">
+        Your words will become part of our
+        <br />
+        forever memories.
+      </p>
+    </div>
+
+    {/* Message preview */}
+    <div className="mt-12 space-y-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="rounded-sm bg-[#FFFDF8] p-6 shadow-[0_10px_30px_rgba(74,44,36,0.06)]"
+      >
+        <span className="text-[#C9A227]">“</span>
+
+        <p className="mt-2 font-serif text-lg italic leading-7 text-[#4B2E20]/70">
+          Wishing you both a lifetime filled with love,
+          laughter and beautiful memories.
+        </p>
+
+        <p className="mt-5 text-[9px] uppercase tracking-[0.25em] text-[#064E3B]">
+          — A loved one
+        </p>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.15 }}
+        className="rounded-sm bg-[#4B2E20] p-6 text-[#FFFDF8]"
+      >
+        <span className="text-[#C9A227]">“</span>
+
+        <p className="mt-2 font-serif text-lg italic leading-7 text-[#FFFDF8]/80">
+          May this new chapter be even more beautiful
+          than everything that came before it.
+        </p>
+
+        <p className="mt-5 text-[9px] uppercase tracking-[0.25em] text-[#C9A227]">
+          — With love
+        </p>
+      </motion.div>
+    </div>
+
+    {/* Leave message */}
+    <div className="mt-8 rounded-sm border border-[#C9A227]/25 bg-[#FFFDF8]/70 p-6 text-center">
+      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#4B2E20] text-xl text-[#C9A227]">
+        ♡
+      </div>
+
+      <h3 className="mt-4 font-serif text-2xl text-[#4B2E20]">
+        Leave a message
+      </h3>
+
+      <p className="mt-2 text-xs text-[#4B2E20]/50">
+        Tell us something we can read and remember forever.
+      </p>
+
+      <button
+        type="button"
+        disabled
+        className="mt-6 rounded-sm bg-[#4B2E20] px-7 py-3 text-[9px] uppercase tracking-[0.3em] text-[#FFFDF8]"
+      >
+        Coming Soon
+      </button>
+    </div>
+  </div>
+</section>
 
 
 {/* =====================================================

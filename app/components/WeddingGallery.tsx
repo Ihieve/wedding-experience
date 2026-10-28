@@ -48,12 +48,12 @@ export default function WeddingGallery() {
   return (
     <div className="mt-10">
       {photos.length === 0 ? (
-        <div className="rounded-sm bg-[#FFFDF8] px-6 py-12 text-center">
+        <div className="rounded-sm bg-[#E8D8C3] px-6 py-12 text-center">
           <span className="text-2xl text-[#C9A227]">
             ♡
           </span>
 
-          <p className="mt-4 text-[9px] uppercase tracking-[0.3em] text-[#4B2E20]/40">
+          <p className="mt-4 text-[9px] uppercase tracking-[0.3em] text-[#4A2C24]/40">
             Your photos will appear here
           </p>
         </div>
@@ -62,7 +62,7 @@ export default function WeddingGallery() {
           {photos.map((photo) => (
             <div
               key={photo.id}
-              className="group relative aspect-square overflow-hidden rounded-sm bg-[#FFFDF8]"
+              className="group relative aspect-square overflow-hidden rounded-sm bg-[#E8D8C3]"
             >
               <img
                 src={photo.imageUrl}
@@ -70,7 +70,7 @@ export default function WeddingGallery() {
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
 
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#4B2E20]/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#4A2C24]/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
           ))}
         </div>

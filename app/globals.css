@@ -51,14 +51,26 @@ button {
 
 /* Subtle animated ambient backdrop: emerald, gold, coffee brown and ivory. */
 .wedding-ambient-background {
-  background:
-    radial-gradient(ellipse at 15% 18%, rgba(15, 107, 91, 0.13), transparent 34%),
-    radial-gradient(ellipse at 88% 78%, rgba(201, 162, 39, 0.15), transparent 31%),
-    radial-gradient(ellipse at 50% 45%, rgba(255, 255, 255, 0.96), transparent 65%),
-    linear-gradient(135deg, #fffdf8 0%, #fff8e9 48%, #fffdf8 100%);
-  background-size: 140% 140%, 150% 150%, 120% 120%, 220% 220%;
-  animation: wedding-background-breathe 18s ease-in-out infinite alternate;
+  background: #fffdf8;
   contain: paint;
+}
+
+.wedding-background-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+  opacity: 0.48;
+  filter: saturate(0.82);
+}
+
+/* Keep the video visible while preserving contrast for the invitation and page copy. */
+.wedding-video-wash {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,253,248,0.62), rgba(255,248,233,0.48) 48%, rgba(255,253,248,0.66));
 }
 
 .wedding-glow {
@@ -258,164 +270,130 @@ button {
     animation: none !important;
   }
 }
-/* Invitation showcase: richer wedding colors without sacrificing legibility. */
-.invitation-showcase {
-  background:
-    radial-gradient(ellipse at 8% 10%, rgba(15, 107, 91, 0.17), transparent 31%),
-    radial-gradient(ellipse at 93% 84%, rgba(75, 46, 32, 0.16), transparent 32%),
-    radial-gradient(ellipse at 53% 47%, rgba(255, 253, 248, 0.96), rgba(248, 237, 218, 0.72) 55%, rgba(232, 216, 195, 0.82) 100%);
+
+
+/* Seamless, continuously moving wedding photo ribbon */
+.wedding-memory-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 0.5rem 0 1rem;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
 }
-
-.invitation-showcase::before,
-.invitation-showcase::after {
-  position: absolute;
-  z-index: -1;
-  width: clamp(12rem, 27vw, 27rem);
-  aspect-ratio: 1;
-  content: "";
-  pointer-events: none;
-  border-radius: 50%;
+.wedding-memory-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 1rem;
+  animation: wedding-memory-slide 95s linear infinite;
+  will-change: transform;
 }
-
-.invitation-showcase::before {
-  top: -48%;
-  left: -12%;
-  border: 1px solid rgba(201, 162, 39, 0.36);
-  box-shadow: 0 0 0 18px rgba(201, 162, 39, 0.045), 0 0 0 36px rgba(15, 107, 91, 0.035);
+.wedding-memory-marquee:hover .wedding-memory-track,
+.wedding-memory-marquee:focus-within .wedding-memory-track {
+  animation-play-state: paused;
 }
-
-.invitation-showcase::after {
-  right: -13%;
-  bottom: -54%;
-  border: 1px solid rgba(15, 107, 91, 0.22);
-  box-shadow: 0 0 0 20px rgba(15, 107, 91, 0.035), 0 0 0 40px rgba(201, 162, 39, 0.045);
+.wedding-memory-slide {
+  flex: 0 0 auto;
+  width: clamp(150px, 19vw, 245px);
+  height: clamp(220px, 28vw, 340px);
+  overflow: hidden;
+  border: 1px solid rgba(201, 162, 39, 0.42);
+  border-radius: 1rem;
+  background: #fffdf8;
+  padding: 0.3rem;
+  box-shadow: 0 12px 34px rgba(74, 44, 36, 0.12);
 }
-
-.invitation-wash {
-  position: absolute;
-  width: clamp(15rem, 36vw, 36rem);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  filter: blur(55px);
-  opacity: 0.5;
-  animation: invitation-wash-drift 19s ease-in-out infinite alternate;
+.wedding-memory-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.7rem;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 650ms ease;
 }
-
-.invitation-wash-emerald {
-  top: 8%;
-  left: -18%;
-  background: radial-gradient(circle, rgba(6, 78, 59, 0.25), transparent 68%);
+.wedding-memory-slide:hover img {
+  transform: scale(1.045);
 }
-
-.invitation-wash-gold {
-  top: 15%;
-  right: -18%;
-  background: radial-gradient(circle, rgba(201, 162, 39, 0.27), transparent 68%);
-  animation-delay: -7s;
+@keyframes wedding-memory-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
-
-.invitation-wash-coffee {
-  bottom: -45%;
-  left: 38%;
-  background: radial-gradient(circle, rgba(75, 46, 32, 0.15), transparent 68%);
-  animation-delay: -11s;
-}
-
-.invitation-ornament {
-  position: absolute;
-  top: 8%;
-  width: clamp(6rem, 12vw, 12rem);
-  height: 75%;
-  opacity: 0.65;
-  border-color: rgba(201, 162, 39, 0.32);
-  border-style: solid;
-  pointer-events: none;
-}
-
-.invitation-ornament-left {
-  left: 1rem;
-  border-width: 0 0 0 1px;
-  border-radius: 50% 0 0 50%;
-  transform: rotate(8deg);
-}
-
-.invitation-ornament-right {
-  right: 1rem;
-  border-width: 0 1px 0 0;
-  border-radius: 0 50% 50% 0;
-  transform: rotate(-8deg);
-}
-
-.invitation-star {
-  position: absolute;
-  color: #a87520;
-  opacity: 0;
-  text-shadow: 0 0 14px rgba(201, 162, 39, 0.4);
-  animation: invitation-star-twinkle 5.8s ease-in-out infinite;
-}
-
-.invitation-star-one { top: 15%; left: 13%; animation-delay: 0s; }
-.invitation-star-two { top: 29%; right: 11%; font-size: 1.3rem; animation-delay: 1.6s; }
-.invitation-star-three { bottom: 18%; left: 20%; animation-delay: 2.7s; }
-.invitation-star-four { bottom: 25%; right: 18%; font-size: 1.25rem; animation-delay: 3.8s; }
-
-.invitation-petal {
-  position: absolute;
-  width: 12px;
-  height: 20px;
-  border: 1px solid rgba(168, 117, 32, 0.45);
-  border-radius: 90% 10% 90% 10%;
-  background: linear-gradient(145deg, rgba(255, 253, 248, 0.92), rgba(201, 162, 39, 0.32));
-  opacity: 0;
-  animation: invitation-petal-drift 14s ease-in-out infinite;
-}
-
-.invitation-petal-one { top: 18%; left: 7%; }
-.invitation-petal-two { top: 63%; right: 8%; animation-delay: -5s; transform: scale(0.8); }
-.invitation-petal-three { top: 83%; left: 40%; animation-delay: -9s; transform: scale(0.65); }
-
-.invitation-script {
-  font-style: italic;
-  font-weight: 400;
-  text-shadow: 0 1px 0 rgba(255, 253, 248, 0.6);
-}
-
-.invitation-card-frame {
-  transform: translateZ(0);
-  transition: box-shadow 350ms ease, transform 350ms ease;
-}
-
-.invitation-card-frame:hover {
-  transform: translateY(-4px) rotate(-0.3deg);
-  box-shadow: 0 34px 85px rgba(57, 34, 23, 0.3);
-}
-
-@keyframes invitation-wash-drift {
-  from { transform: translate3d(-1%, -2%, 0) scale(0.95); }
-  to { transform: translate3d(5%, 4%, 0) scale(1.08); }
-}
-
-@keyframes invitation-star-twinkle {
-  0%, 100% { opacity: 0; transform: translateY(5px) scale(0.75) rotate(0deg); }
-  35%, 60% { opacity: 0.7; transform: translateY(-6px) scale(1) rotate(16deg); }
-}
-
-@keyframes invitation-petal-drift {
-  0%, 100% { opacity: 0; transform: translate3d(0, 10px, 0) rotate(-15deg); }
-  30%, 70% { opacity: 0.65; transform: translate3d(18px, -12px, 0) rotate(30deg); }
-}
-
 @media (max-width: 640px) {
-  .invitation-ornament { opacity: 0.35; width: 3rem; }
-  .invitation-ornament-left { left: 0.25rem; }
-  .invitation-ornament-right { right: 0.25rem; }
+  .wedding-memory-track { gap: 0.7rem; animation-duration: 75s; }
+  .wedding-memory-slide {
+    width: 156px;
+    height: 224px;
+    border-radius: 0.85rem;
+    padding: 0.25rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wedding-memory-track { animation: none; }
+  .wedding-memory-marquee { overflow-x: auto; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .invitation-wash,
-  .invitation-star,
-  .invitation-petal {
-    animation: none !important;
-  }
-  .invitation-card-frame { transition: none; }
+/* Wedding theme toggle: deep emerald, coffee and antique gold night palette. */
+.theme-toggle {
+  color: #4a2c24;
+  border-color: rgba(201, 162, 39, 0.48);
+  background: rgba(255, 253, 248, 0.84);
 }
+.theme-toggle:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(75, 46, 32, 0.15); }
+.dark-theme {
+  --background: #101d19;
+  --foreground: #f5eee1;
+  color: #f5eee1;
+  background-color: #101d19 !important;
+}
+.dark-theme .wedding-ambient-background { background: #101d19; }
+.dark-theme .wedding-background-video { opacity: 0.28; filter: saturate(0.65) brightness(0.62); }
+.dark-theme .wedding-video-wash {
+  background: linear-gradient(135deg, rgba(8, 24, 20, 0.82), rgba(23, 30, 25, 0.70) 48%, rgba(38, 27, 22, 0.82));
+}
+.dark-theme .wedding-glow { mix-blend-mode: screen; opacity: 0.42; }
+.dark-theme .wedding-orbit { border-color: rgba(201, 162, 39, 0.18); }
+.dark-theme .wedding-orbit-two { border-color: rgba(91, 177, 146, 0.15); }
+.dark-theme .theme-toggle {
+  color: #f8efd9;
+  border-color: rgba(201, 162, 39, 0.6);
+  background: rgba(18, 40, 33, 0.88);
+}
+.dark-theme [class*="bg-[#FFFDF8]"],
+.dark-theme [class*="bg-[#fffdf8]"],
+.dark-theme [class*="bg-[#FFFCF7]"],
+.dark-theme [class*="bg-[#F8F2E7]"],
+.dark-theme [class*="bg-white"] {
+  background-color: #172923 !important;
+}
+.dark-theme [class*="text-[#4B2E20]"],
+.dark-theme [class*="text-[#4A2C24]"],
+.dark-theme [class*="text-[#4a2c24]"],
+.dark-theme [class*="text-[#6B4B3E]"],
+.dark-theme [class*="text-[#7C6254]"],
+.dark-theme [class*="text-[#8A7568]"],
+.dark-theme [class*="text-[#6D5548]"],
+.dark-theme [class*="text-brown"] {
+  color: #f1e7d5 !important;
+}
+.dark-theme [class*="border-[#C9A227]"],
+.dark-theme [class*="border-[#c9a227]"] { border-color: rgba(201, 162, 39, 0.55) !important; }
+.dark-theme input,
+.dark-theme textarea,
+.dark-theme select {
+  color: #f5eee1;
+  background-color: #172923;
+  border-color: rgba(201, 162, 39, 0.45);
+}
+.dark-theme input::placeholder,
+.dark-theme textarea::placeholder { color: #b8aa96; }
+.dark-theme .wedding-memory-slide { background: #172923; border-color: rgba(201, 162, 39, 0.4); }
+.dark-theme .wedding-memory-slide figcaption { color: #f1e7d5; }
+
+
+/* Compact theme switch and floating wedding music control. */
+.theme-toggle { padding: 0.35rem 0.65rem !important; gap: 0.35rem !important; font-size: 0.72rem !important; }
+.music-player { color: #4a2c24; border-color: rgba(201, 162, 39, 0.72); background: rgba(255, 253, 248, 0.9); }
+.music-player:hover { box-shadow: 0 8px 24px rgba(75, 46, 32, 0.2); }
+.dark-theme .music-player { color: #f8efd9; background: rgba(18, 40, 33, 0.92); border-color: rgba(201, 162, 39, 0.7); }
