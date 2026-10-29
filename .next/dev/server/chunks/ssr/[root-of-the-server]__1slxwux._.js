@@ -114,34 +114,38 @@ function GuestbookForm() {
     const [busy, setBusy] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [status, setStatus] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [messages, setMessages] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [loadError, setLoadError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        try {
-            const publicMessages = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["query"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$common$2d$B2I0AjXl$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__a___as__collection$3e$__["collection"])(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$firebase$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["db"], "guestbookMessages"), (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["where"])("approved", "==", true), (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["orderBy"])("createdAt", "desc"));
-            return (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["onSnapshot"])(publicMessages, (snapshot)=>{
-                setMessages(snapshot.docs.map((item)=>({
-                        id: item.id,
-                        ...item.data()
-                    })).slice(0, 12));
-            }, ()=>setMessages([]));
-        } catch  {
-            setMessages([]);
-        }
+        const messagesQuery = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["query"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$common$2d$B2I0AjXl$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__a___as__collection$3e$__["collection"])(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$firebase$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["db"], "guestbookMessages"), (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["orderBy"])("createdAt", "desc"));
+        return (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["onSnapshot"])(messagesQuery, (snapshot)=>{
+            setLoadError("");
+            const publicMessages = snapshot.docs.map((doc)=>({
+                    id: doc.id,
+                    ...doc.data()
+                })).filter((item)=>item.approved === true).slice(0, 12);
+            setMessages(publicMessages);
+        }, (error)=>{
+            console.error("Guestbook loading failed:", error);
+            setLoadError(`${error.code}: ${error.message}`);
+        });
     }, []);
     async function handleSubmit(event) {
         event.preventDefault();
         setStatus(null);
-        if (name.trim().length < 2 || message.trim().length < 5) {
+        const cleanName = name.trim();
+        const cleanMessage = message.trim();
+        if (cleanName.length < 2 || cleanMessage.length < 5) {
             setStatus({
                 type: "error",
-                text: "Please enter your name and a message of at least 5 characters."
+                text: "Enter your name and a message of at least 5 characters."
             });
             return;
         }
         setBusy(true);
         try {
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["addDoc"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$common$2d$B2I0AjXl$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__a___as__collection$3e$__["collection"])(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$firebase$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["db"], "guestbookMessages"), {
-                name: name.trim(),
-                message: message.trim(),
+                name: cleanName,
+                message: cleanMessage,
                 createdAt: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$common$2d$B2I0AjXl$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__bd__as__serverTimestamp$3e$__["serverTimestamp"])(),
                 approved: true
             });
@@ -152,6 +156,7 @@ function GuestbookForm() {
                 text: "Thank you! Your message has been added to the wedding guestbook."
             });
         } catch (error) {
+            console.error("Guestbook submission failed:", error);
             setStatus({
                 type: "error",
                 text: error instanceof Error ? error.message : "Something went wrong. Please try again."
@@ -171,7 +176,7 @@ function GuestbookForm() {
                         children: "A note for the couple"
                     }, void 0, false, {
                         fileName: "[project]/app/components/GuestbookForm.tsx",
-                        lineNumber: 55,
+                        lineNumber: 115,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -179,7 +184,7 @@ function GuestbookForm() {
                         children: "Leave a message"
                     }, void 0, false, {
                         fileName: "[project]/app/components/GuestbookForm.tsx",
-                        lineNumber: 56,
+                        lineNumber: 118,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -187,7 +192,7 @@ function GuestbookForm() {
                         children: "Share a blessing, a memory, or a few kind words for our new beginning."
                     }, void 0, false, {
                         fileName: "[project]/app/components/GuestbookForm.tsx",
-                        lineNumber: 57,
+                        lineNumber: 121,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -209,13 +214,13 @@ function GuestbookForm() {
                                         placeholder: "Your name"
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/GuestbookForm.tsx",
-                                        lineNumber: 60,
+                                        lineNumber: 128,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/components/GuestbookForm.tsx",
-                                lineNumber: 59,
+                                lineNumber: 126,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -233,13 +238,13 @@ function GuestbookForm() {
                                         placeholder: "Write your wishes for Blessing & Gideon..."
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/GuestbookForm.tsx",
-                                        lineNumber: 63,
+                                        lineNumber: 142,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/components/GuestbookForm.tsx",
-                                lineNumber: 62,
+                                lineNumber: 140,
                                 columnNumber: 11
                             }, this),
                             status && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -248,8 +253,20 @@ function GuestbookForm() {
                                 children: status.text
                             }, void 0, false, {
                                 fileName: "[project]/app/components/GuestbookForm.tsx",
-                                lineNumber: 65,
-                                columnNumber: 22
+                                lineNumber: 155,
+                                columnNumber: 13
+                            }, this),
+                            loadError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                role: "alert",
+                                className: "rounded-sm bg-red-50 p-3 text-sm text-red-800",
+                                children: [
+                                    "Messages could not load: ",
+                                    loadError
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/app/components/GuestbookForm.tsx",
+                                lineNumber: 168,
+                                columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 type: "submit",
@@ -258,7 +275,7 @@ function GuestbookForm() {
                                 children: busy ? "Adding your message…" : "Sign the guestbook"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/GuestbookForm.tsx",
-                                lineNumber: 66,
+                                lineNumber: 176,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -266,19 +283,19 @@ function GuestbookForm() {
                                 children: "Your message will appear in the public wedding guestbook."
                             }, void 0, false, {
                                 fileName: "[project]/app/components/GuestbookForm.tsx",
-                                lineNumber: 67,
+                                lineNumber: 184,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/GuestbookForm.tsx",
-                        lineNumber: 58,
+                        lineNumber: 125,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/GuestbookForm.tsx",
-                lineNumber: 54,
+                lineNumber: 114,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -291,24 +308,24 @@ function GuestbookForm() {
                                 children: "Words to treasure"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/GuestbookForm.tsx",
-                                lineNumber: 72,
-                                columnNumber: 56
+                                lineNumber: 192,
+                                columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                 className: "mt-2 font-serif text-2xl text-[#4B2E20]",
                                 children: "Messages from our loved ones"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/GuestbookForm.tsx",
-                                lineNumber: 72,
-                                columnNumber: 146
+                                lineNumber: 195,
+                                columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/GuestbookForm.tsx",
-                        lineNumber: 72,
+                        lineNumber: 191,
                         columnNumber: 9
                     }, this),
-                    messages.length ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    messages.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "space-y-4",
                         children: messages.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
                                 className: "rounded-sm border border-[#C9A227]/20 bg-[#FFFDF8]/85 p-5 shadow-sm",
@@ -318,16 +335,16 @@ function GuestbookForm() {
                                         children: "“"
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/GuestbookForm.tsx",
-                                        lineNumber: 73,
-                                        columnNumber: 182
+                                        lineNumber: 207,
+                                        columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "mt-1 whitespace-pre-wrap font-serif text-base italic leading-7 text-[#4B2E20]/80",
                                         children: item.message
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/GuestbookForm.tsx",
-                                        lineNumber: 73,
-                                        columnNumber: 256
+                                        lineNumber: 210,
+                                        columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "mt-4 text-[9px] uppercase tracking-[0.2em] text-[#064E3B]",
@@ -337,19 +354,19 @@ function GuestbookForm() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/components/GuestbookForm.tsx",
-                                        lineNumber: 73,
-                                        columnNumber: 370
+                                        lineNumber: 213,
+                                        columnNumber: 17
                                     }, this)
                                 ]
                             }, item.id, true, {
                                 fileName: "[project]/app/components/GuestbookForm.tsx",
-                                lineNumber: 73,
-                                columnNumber: 79
+                                lineNumber: 203,
+                                columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/app/components/GuestbookForm.tsx",
-                        lineNumber: 73,
-                        columnNumber: 28
+                        lineNumber: 201,
+                        columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "rounded-sm border border-dashed border-[#C9A227]/35 p-8 text-center",
                         children: [
@@ -358,41 +375,41 @@ function GuestbookForm() {
                                 children: "♡"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/GuestbookForm.tsx",
-                                lineNumber: 73,
-                                columnNumber: 566
+                                lineNumber: 221,
+                                columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "mt-3 font-serif text-lg italic text-[#4B2E20]/70",
-                                children: "Your wishes will be the first pages of this guestbook."
+                                children: loadError ? "We couldn't load the guestbook messages." : "Your wishes will be the first pages of this guestbook."
                             }, void 0, false, {
                                 fileName: "[project]/app/components/GuestbookForm.tsx",
-                                lineNumber: 73,
-                                columnNumber: 616
+                                lineNumber: 222,
+                                columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "mt-2 text-xs leading-5 text-[#4B2E20]/50",
                                 children: "Messages shared by our guests appear here."
                             }, void 0, false, {
                                 fileName: "[project]/app/components/GuestbookForm.tsx",
-                                lineNumber: 73,
-                                columnNumber: 738
+                                lineNumber: 227,
+                                columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/GuestbookForm.tsx",
-                        lineNumber: 73,
-                        columnNumber: 481
+                        lineNumber: 220,
+                        columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/GuestbookForm.tsx",
-                lineNumber: 71,
+                lineNumber: 190,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/GuestbookForm.tsx",
-        lineNumber: 53,
+        lineNumber: 113,
         columnNumber: 5
     }, this);
 }
