@@ -6,29 +6,40 @@ import Countdown from "./components/countdown";
 import WeddingCamera from "./components/WeddingCamera";
 import WeddingGallery from "./components/WeddingGallery";
 import WeddingMemories from "./components/WeddingMemories";
+import GuestbookForm from "./components/GuestbookForm";
 
 export default function Home() {
   const [isOpening, setIsOpening] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isThemeLoaded, setIsThemeLoaded] = useState(false);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
 
+  // Read the saved preference before writing anything back. This avoids the
+  // initial light-mode render overwriting a previously saved dark preference.
   useEffect(() => {
+    let savedTheme = "light";
     try {
-      setIsDarkMode(window.localStorage.getItem("wedding-theme") === "dark");
+      savedTheme = window.localStorage.getItem("wedding-theme") ?? "light";
     } catch {
       // Theme still works for the current session if storage is unavailable.
     }
+    const prefersDark = savedTheme === "dark";
+    setIsDarkMode(prefersDark);
+    document.documentElement.dataset.weddingTheme = prefersDark ? "dark" : "light";
+    setIsThemeLoaded(true);
   }, []);
 
   useEffect(() => {
-    document.documentElement.dataset.weddingTheme = isDarkMode ? "dark" : "light";
+    if (!isThemeLoaded) return;
+    const theme = isDarkMode ? "dark" : "light";
+    document.documentElement.dataset.weddingTheme = theme;
     try {
-      window.localStorage.setItem("wedding-theme", isDarkMode ? "dark" : "light");
+      window.localStorage.setItem("wedding-theme", theme);
     } catch {
-      // Ignore storage restrictions.
+      // Ignore storage restrictions; the toggle remains usable for this session.
     }
-  }, [isDarkMode]);
+  }, [isDarkMode, isThemeLoaded]);
 
   const openInvitation = () => {
     if (isOpening) return;
@@ -44,8 +55,11 @@ export default function Home() {
     <main className={`relative isolate min-h-screen overflow-hidden bg-[#FFFDF8] text-[#4B2E20] ${isDarkMode ? "dark-theme" : "light-theme"}`}>
       {/* Full-screen wedding video background. Muted playback allows autoplay in modern browsers. */}
       <div aria-hidden="true" className="wedding-ambient-background pointer-events-none fixed inset-0 z-0 overflow-hidden">
-        <video className="wedding-background-video" autoPlay muted loop playsInline preload="auto" tabIndex={-1}>
+        <video className="wedding-background-video wedding-background-video--one" autoPlay muted loop playsInline preload="auto" tabIndex={-1} aria-hidden="true">
           <source src="/wedding-media/lv_0_20261028144344.mp4" type="video/mp4" />
+        </video>
+        <video className="wedding-background-video wedding-background-video--two" autoPlay muted loop playsInline preload="metadata" tabIndex={-1} aria-hidden="true">
+          <source src="/wedding-media/lv_0_20261026151038.mp4" type="video/mp4" />
         </video>
         <div className="wedding-video-wash" />
         <div className="wedding-glow wedding-glow-emerald" />
@@ -613,16 +627,18 @@ export default function Home() {
             <section id="official-invitation" className="relative isolate flex min-h-[620px] items-center justify-center overflow-hidden px-5 py-20 sm:min-h-[760px] sm:py-24">
               <div aria-hidden="true" className="absolute inset-0 -z-30 overflow-hidden bg-[#10251D]">
                 <video
-                  className="h-full w-full object-cover object-center"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
-                  tabIndex={-1}
-                  poster="/Blessing%20%26%20Gideon.jpeg"
+                  className="invitation-background-video invitation-background-video--one"
+                  autoPlay muted loop playsInline preload="auto" tabIndex={-1}
+                  poster="/Blessing%20%26%20Gideon.jpeg" aria-hidden="true"
                 >
                   <source src="/wedding-media/lv_0_20261028144344.mp4" type="video/mp4" />
+                </video>
+                <video
+                  className="invitation-background-video invitation-background-video--two"
+                  autoPlay muted loop playsInline preload="metadata" tabIndex={-1}
+                  aria-hidden="true"
+                >
+                  <source src="/wedding-media/lv_0_20261026151038.mp4" type="video/mp4" />
                 </video>
               </div>
               <div aria-hidden="true" className="absolute inset-0 -z-20 bg-gradient-to-b from-[#FFF8E9]/82 via-[#FFF8E9]/68 to-[#FFF8E9]/86 dark:from-[#10251D]/82 dark:via-[#10251D]/66 dark:to-[#10251D]/88" />
@@ -776,8 +792,8 @@ export default function Home() {
 {/* =====================================================
     WEDDING DAY SCHEDULE
 ===================================================== */}
-<section className="relative overflow-hidden bg-[#FFFDF8] px-5 py-24">
-  {/* Decorative background */}
+<section className="wedding-day-section relative overflow-hidden bg-[#FFFDF8] px-5 py-24">
+  {/* The shared two-video background remains visible through this translucent section in light and dark themes. */}
   <div className="pointer-events-none absolute inset-0">
     <div className="absolute left-0 top-20 h-40 w-40 rounded-full border border-[#C9A227]/20" />
 
@@ -836,7 +852,7 @@ export default function Home() {
 
     {/* Wedding day schedule */}
     <div className="relative mt-12 space-y-5">
-      <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="flex gap-5 rounded-sm border border-[#C9A227]/25 bg-[#FFFDF8] p-5 shadow-[0_10px_30px_rgba(75,46,32,0.06)] sm:p-6">
+      <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="wedding-day-schedule-card flex gap-5 rounded-sm border border-[#C9A227]/25 bg-[#FFFDF8] p-5 shadow-[0_10px_30px_rgba(75,46,32,0.06)] sm:p-6">
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#C9A227] text-xl text-[#C9A227]">♡</div>
         <div className="min-w-0 flex-1">
           <p className="text-[9px] uppercase tracking-[0.3em] text-[#064E3B]">9:00 AM</p>
@@ -844,7 +860,7 @@ export default function Home() {
           <p className="mt-2 text-sm leading-6 text-[#4B2E20]/65">RCCG Aroma of Christ Parish, Behind Acropolis Park, APO Resettlement, APO, Abuja.</p>
         </div>
       </motion.div>
-      <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.15, duration: 0.6 }} className="flex gap-5 rounded-sm border border-[#C9A227]/25 bg-[#FFFDF8] p-5 shadow-[0_10px_30px_rgba(75,46,32,0.06)] sm:p-6">
+      <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.15, duration: 0.6 }} className="wedding-day-schedule-card flex gap-5 rounded-sm border border-[#C9A227]/25 bg-[#FFFDF8] p-5 shadow-[0_10px_30px_rgba(75,46,32,0.06)] sm:p-6">
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#C9A227] text-xl text-[#C9A227]">♩</div>
         <div className="min-w-0 flex-1">
           <p className="text-[9px] uppercase tracking-[0.3em] text-[#064E3B]">Immediately after the church service</p>
@@ -1114,7 +1130,7 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.15 * index, duration: 0.5 }}
-          className="overflow-hidden rounded-sm bg-white shadow-[0_10px_30px_rgba(75,46,32,0.08)]"
+          className={`wedding-color-swing wedding-color-swing-${index + 1} overflow-hidden rounded-sm bg-white shadow-[0_10px_30px_rgba(75,46,32,0.08)]`}
         >
           <div className={`h-24 ${color.border ? "border border-[#4B2E20]/10" : ""}`} style={{ backgroundColor: color.color }} />
           <div className="p-4">
@@ -1398,93 +1414,21 @@ export default function Home() {
 {/* =====================================================
     #10 — DIGITAL GUESTBOOK
 ===================================================== */}
-<section className="relative overflow-hidden bg-[#FFFDF8] px-5 py-24">
+<section className="guestbook-section relative overflow-hidden px-5 py-24 sm:py-28">
   <div className="pointer-events-none absolute inset-0">
-    <div className="absolute -left-20 top-20 h-48 w-48 rounded-full border border-[#C9A227]/15" />
-    <div className="absolute -right-20 bottom-20 h-48 w-48 rounded-full border border-[#064E3B]/10" />
+    <div className="absolute -left-20 top-20 h-48 w-48 rounded-full border border-[#C9A227]/20" />
+    <div className="absolute -right-20 bottom-20 h-48 w-48 rounded-full border border-[#064E3B]/15" />
   </div>
-
-  <div className="relative mx-auto max-w-xl">
-    <div className="text-center">
-      <p className="text-[9px] uppercase tracking-[0.45em] text-[#064E3B]">
-        Leave a little love
-      </p>
-
-      <h2 className="mt-4 font-serif text-4xl text-[#4B2E20] sm:text-5xl">
-        Guestbook
-      </h2>
-
+  <div className="relative mx-auto max-w-6xl">
+    <div className="mx-auto max-w-2xl text-center">
+      <p className="text-[9px] uppercase tracking-[0.45em] text-[#064E3B]">Leave a little love</p>
+      <h2 className="mt-4 font-serif text-4xl text-[#4B2E20] sm:text-5xl">Guestbook</h2>
       <div className="mx-auto my-7 h-px w-16 bg-[#C9A227]" />
-
-      <p className="font-serif text-lg italic leading-7 text-[#4B2E20]/60">
-        Your words will become part of our
-        <br />
-        forever memories.
+      <p className="font-serif text-lg italic leading-7 text-[#4B2E20]/70">
+        Your words will become part of our forever memories.<br />Choose whether to share them publicly or keep them private.
       </p>
     </div>
-
-    {/* Message preview */}
-    <div className="mt-12 space-y-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="rounded-sm bg-[#FFFDF8] p-6 shadow-[0_10px_30px_rgba(74,44,36,0.06)]"
-      >
-        <span className="text-[#C9A227]">“</span>
-
-        <p className="mt-2 font-serif text-lg italic leading-7 text-[#4B2E20]/70">
-          Wishing you both a lifetime filled with love,
-          laughter and beautiful memories.
-        </p>
-
-        <p className="mt-5 text-[9px] uppercase tracking-[0.25em] text-[#064E3B]">
-          — A loved one
-        </p>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.15 }}
-        className="rounded-sm bg-[#4B2E20] p-6 text-[#FFFDF8]"
-      >
-        <span className="text-[#C9A227]">“</span>
-
-        <p className="mt-2 font-serif text-lg italic leading-7 text-[#FFFDF8]/80">
-          May this new chapter be even more beautiful
-          than everything that came before it.
-        </p>
-
-        <p className="mt-5 text-[9px] uppercase tracking-[0.25em] text-[#C9A227]">
-          — With love
-        </p>
-      </motion.div>
-    </div>
-
-    {/* Leave message */}
-    <div className="mt-8 rounded-sm border border-[#C9A227]/25 bg-[#FFFDF8]/70 p-6 text-center">
-      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#4B2E20] text-xl text-[#C9A227]">
-        ♡
-      </div>
-
-      <h3 className="mt-4 font-serif text-2xl text-[#4B2E20]">
-        Leave a message
-      </h3>
-
-      <p className="mt-2 text-xs text-[#4B2E20]/50">
-        Tell us something we can read and remember forever.
-      </p>
-
-      <button
-        type="button"
-        disabled
-        className="mt-6 rounded-sm bg-[#4B2E20] px-7 py-3 text-[9px] uppercase tracking-[0.3em] text-[#FFFDF8]"
-      >
-        Coming Soon
-      </button>
-    </div>
+    <GuestbookForm />
   </div>
 </section>
 
@@ -1582,19 +1526,23 @@ export default function Home() {
         For those who wish to bless us
       </p>
 
-      <p className="mt-4 text-sm leading-6 text-[#FFFDF8]/60">
-        Gift information will be made available
-        here for anyone who would like to support
-        our new beginning.
-      </p>
-
-      <button
-        type="button"
-        disabled
-        className="mt-6 rounded-sm border border-[#C9A227]/50 px-7 py-3 text-[9px] uppercase tracking-[0.3em] text-[#C9A227]"
-      >
-        Coming Soon
-      </button>
+      <div className="mt-5 space-y-4 text-left">
+        <div>
+          <p className="text-[9px] uppercase tracking-[0.25em] text-[#FFFDF8]/55">Bank / wallet</p>
+          <p className="mt-1 text-lg text-[#FFFDF8]">PalmPay</p>
+        </div>
+        <div>
+          <p className="text-[9px] uppercase tracking-[0.25em] text-[#FFFDF8]/55">Account name</p>
+          <p className="mt-1 text-lg text-[#FFFDF8]">Gideon</p>
+        </div>
+        <div>
+          <p className="text-[9px] uppercase tracking-[0.25em] text-[#FFFDF8]/55">Account number</p>
+          <div className="mt-1 flex items-center justify-between gap-3">
+            <p className="text-xl tracking-wider text-[#FFFDF8]">7054919985</p>
+            <button type="button" onClick={() => navigator.clipboard?.writeText("7054919985")} className="rounded-sm border border-[#C9A227]/60 px-4 py-2 text-[9px] uppercase tracking-[0.2em] text-[#C9A227] transition hover:bg-[#C9A227]/10">Copy number</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

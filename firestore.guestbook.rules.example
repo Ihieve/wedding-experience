@@ -1,0 +1,17 @@
+// Merge this match block into your EXISTING Firestore rules; do not replace
+// the whole rules file. Public reads are limited to approved guestbook entries.
+match /guestbookMessages/{messageId} {
+  allow read: if resource.data.approved == true;
+  allow create: if request.resource.data.keys().hasOnly([
+      'name', 'message', 'createdAt', 'approved'
+    ])
+    && request.resource.data.name is string
+    && request.resource.data.name.size() >= 2
+    && request.resource.data.name.size() <= 100
+    && request.resource.data.message is string
+    && request.resource.data.message.size() >= 5
+    && request.resource.data.message.size() <= 2000
+    && request.resource.data.approved == true
+    && request.resource.data.createdAt == request.time;
+  allow update, delete: if false;
+}

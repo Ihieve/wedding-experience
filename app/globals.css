@@ -55,16 +55,40 @@ button {
   contain: paint;
 }
 
-.wedding-background-video {
+.wedding-background-video,
+.invitation-background-video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 45%;
-  opacity: 0.48;
+  opacity: 0;
   filter: saturate(0.82);
 }
+
+/* Both supplied videos alternate with a soft crossfade behind every page section. */
+.wedding-background-video--one,
+.invitation-background-video--one {
+  animation: wedding-video-crossfade-one 32s ease-in-out infinite;
+}
+.wedding-background-video--two,
+.invitation-background-video--two {
+  animation: wedding-video-crossfade-two 32s ease-in-out infinite;
+}
+
+@keyframes wedding-video-crossfade-one {
+  0%, 44% { opacity: 0.48; }
+  50%, 94% { opacity: 0; }
+  100% { opacity: 0.48; }
+}
+@keyframes wedding-video-crossfade-two {
+  0%, 44% { opacity: 0; }
+  50%, 94% { opacity: 0.48; }
+  100% { opacity: 0; }
+}
+
+.invitation-background-video { object-position: center; }
 
 /* Keep the video visible while preserving contrast for the invitation and page copy. */
 .wedding-video-wash {
@@ -397,3 +421,103 @@ button {
 .music-player { color: #4a2c24; border-color: rgba(201, 162, 39, 0.72); background: rgba(255, 253, 248, 0.9); }
 .music-player:hover { box-shadow: 0 8px 24px rgba(75, 46, 32, 0.2); }
 .dark-theme .music-player { color: #f8efd9; background: rgba(18, 40, 33, 0.92); border-color: rgba(201, 162, 39, 0.7); }
+
+@media (prefers-reduced-motion: reduce) {
+  .wedding-background-video, .invitation-background-video { animation: none; }
+  .wedding-background-video--one, .invitation-background-video--one { opacity: 0.48; }
+  .wedding-background-video--two, .invitation-background-video--two { opacity: 0; }
+}
+
+
+/* Let the shared video montage show through the Wedding Day section in both themes. */
+.wedding-day-section {
+  background: rgba(255, 253, 248, 0.42) !important;
+  isolation: isolate;
+}
+.wedding-day-section > .pointer-events-none {
+  z-index: -1;
+}
+.wedding-day-schedule-card {
+  background: rgba(255, 253, 248, 0.76) !important;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.dark-theme .wedding-day-section {
+  background: rgba(10, 28, 22, 0.48) !important;
+}
+.dark-theme .wedding-day-schedule-card {
+  background: rgba(18, 39, 31, 0.78) !important;
+  border-color: rgba(201, 162, 39, 0.48) !important;
+}
+
+/* Guestbook section follows the selected site theme while keeping its invitation palette. */
+.guestbook-section {
+  background: rgba(232, 216, 190, 0.94);
+}
+[data-wedding-theme="dark"] .guestbook-section,
+.dark-theme .guestbook-section {
+  background: rgba(14, 39, 31, 0.94);
+}
+[data-wedding-theme="dark"] .guestbook-section h2,
+[data-wedding-theme="dark"] .guestbook-section h3,
+[data-wedding-theme="dark"] .guestbook-section label,
+[data-wedding-theme="dark"] .guestbook-section p,
+.dark-theme .guestbook-section h2,
+.dark-theme .guestbook-section h3,
+.dark-theme .guestbook-section label,
+.dark-theme .guestbook-section p {
+  color: #F8EEDC;
+}
+[data-wedding-theme="dark"] .guestbook-section input,
+[data-wedding-theme="dark"] .guestbook-section textarea,
+.dark-theme .guestbook-section input,
+.dark-theme .guestbook-section textarea {
+  color: #F8EEDC;
+  background: rgba(8, 26, 21, 0.72);
+  border-color: rgba(201, 162, 39, 0.4);
+}
+[data-wedding-theme="dark"] .guestbook-section article,
+[data-wedding-theme="dark"] .guestbook-section label:has(input[type="radio"]),
+.dark-theme .guestbook-section article,
+.dark-theme .guestbook-section label:has(input[type="radio"]) {
+  background: rgba(8, 26, 21, 0.66);
+  border-color: rgba(201, 162, 39, 0.28);
+}
+
+/* Guestbook section follows the selected site theme while keeping its invitation palette. */
+.guestbook-section { background: rgba(232, 216, 190, 0.94); }
+[data-wedding-theme="dark"] .guestbook-section, .dark-theme .guestbook-section { background: rgba(14, 39, 31, 0.94); }
+[data-wedding-theme="dark"] .guestbook-section h2,
+[data-wedding-theme="dark"] .guestbook-section h3,
+[data-wedding-theme="dark"] .guestbook-section label,
+[data-wedding-theme="dark"] .guestbook-section p,
+.dark-theme .guestbook-section h2,
+.dark-theme .guestbook-section h3,
+.dark-theme .guestbook-section label,
+.dark-theme .guestbook-section p { color: #F8EEDC; }
+[data-wedding-theme="dark"] .guestbook-section input,
+[data-wedding-theme="dark"] .guestbook-section textarea,
+.dark-theme .guestbook-section input,
+.dark-theme .guestbook-section textarea { color: #F8EEDC; background: rgba(8, 26, 21, 0.72); border-color: rgba(201, 162, 39, 0.4); }
+[data-wedding-theme="dark"] .guestbook-section article,
+[data-wedding-theme="dark"] .guestbook-section label:has(input[type="radio"]),
+.dark-theme .guestbook-section article,
+.dark-theme .guestbook-section label:has(input[type="radio"]) { background: rgba(8, 26, 21, 0.66); border-color: rgba(201, 162, 39, 0.28); }
+
+
+/* Gentle swinging motion for the four wedding-day color swatches. */
+.wedding-color-swing {
+  transform-origin: top center;
+  animation: wedding-color-sway 3.8s ease-in-out infinite;
+  will-change: transform;
+}
+.wedding-color-swing-2 { animation-delay: -0.8s; }
+.wedding-color-swing-3 { animation-delay: -1.6s; }
+.wedding-color-swing-4 { animation-delay: -2.4s; }
+@keyframes wedding-color-sway {
+  0%, 100% { transform: rotate(-2deg) translateY(0); }
+  50% { transform: rotate(2deg) translateY(3px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wedding-color-swing { animation: none !important; }
+}
