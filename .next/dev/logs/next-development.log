@@ -2433,3 +2433,9 @@
 {"timestamp":"199:18:05.780","source":"Server","level":"WARN","message":"[browser] \"\\u001b[33m[2026-11-06T19:30:49.302Z]  @firebase/firestore:\\u001b[39m\" \"\\u001b[33mFirestore (12.17.0): WebChannelConnection\\u001b[39m\" \"\\u001b[33mRPC 'Listen' stream 0x68afb5d3 transport errored. Name:\\u001b[39m\" undefined \"\\u001b[33mMessage:\\u001b[39m\" undefined"}
 {"timestamp":"199:18:06.467","source":"Browser","level":"WARN","message":"[2026-11-06T19:30:50.219Z]  @firebase/firestore: Firestore (12.17.0): WebChannelConnection RPC 'Listen' stream 0x68afb5d4 transport errored. Name: undefined Message: undefined"}
 {"timestamp":"199:18:06.467","source":"Server","level":"WARN","message":"[browser] \"\\u001b[33m[2026-11-06T19:30:50.219Z]  @firebase/firestore:\\u001b[39m\" \"\\u001b[33mFirestore (12.17.0): WebChannelConnection\\u001b[39m\" \"\\u001b[33mRPC 'Listen' stream 0x68afb5d4 transport errored. Name:\\u001b[39m\" undefined \"\\u001b[33mMessage:\\u001b[39m\" undefined"}
+{"timestamp":"199:27:53.214","source":"Server","level":"LOG","message":"✓ Compiled in 71ms"}
+{"timestamp":"199:28:48.266","source":"Server","level":"LOG","message":"✓ Compiled in 39ms"}
+{"timestamp":"199:35:49.210","source":"Server","level":"LOG","message":"✓ Compiled in 95ms"}
+{"timestamp":"199:35:56.387","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"199:37:29.752","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"199:40:15.430","source":"Server","level":"LOG","message":"✓ Compiled in 120ms"}

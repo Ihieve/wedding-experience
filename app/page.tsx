@@ -644,16 +644,35 @@ export default function Home() {
               <div aria-hidden="true" className="absolute inset-0 -z-20 bg-gradient-to-b from-[#FFF8E9]/82 via-[#FFF8E9]/68 to-[#FFF8E9]/86 dark:from-[#10251D]/82 dark:via-[#10251D]/66 dark:to-[#10251D]/88" />
               <div aria-hidden="true" className="pointer-events-none absolute inset-4 border border-[#C9A227]/70 sm:inset-8" />
               <div aria-hidden="true" className="pointer-events-none absolute inset-7 border border-[#C9A227]/30 sm:inset-12" />
-              <div className="relative mx-auto w-full max-w-4xl text-center">
-                <p className="text-[9px] uppercase tracking-[0.42em] text-[#064E3B] dark:text-[#D9C17A]">Together with our families</p>
-                <h2 className="mt-4 font-serif text-4xl leading-tight text-[#4B2E20] sm:text-6xl dark:text-[#FFF5DE]">Blessing Gabriel <span className="text-[#C9A227]">&amp;</span><br className="sm:hidden" /> Gideon Ihieve</h2>
-                <p className="mt-3 font-serif text-lg italic text-[#064E3B] sm:text-2xl dark:text-[#E7D6A2]">A day to remember</p>
-                <div className="mx-auto my-6 h-px w-24 bg-[#C9A227]" />
-                <div className="mx-auto max-w-2xl rounded-2xl border border-[#C9A227]/50 bg-[#FFFDF8]/65 px-6 py-7 shadow-2xl shadow-[#4B2E20]/10 backdrop-blur-sm dark:bg-[#10251D]/60 sm:px-10 sm:py-9">
-                  <p className="font-serif text-base leading-7 text-[#4B2E20]/90 sm:text-lg dark:text-[#FFF5DE]/90">We have found our Blessing, and we are coming together as one. With grateful hearts and God’s grace, we invite you to share in this beautiful new beginning.</p>
-                  <p className="mt-6 text-xs uppercase tracking-[0.3em] text-[#064E3B] dark:text-[#D9C17A]">Wednesday · 23 December 2026</p>
-                  <p className="mt-3 font-serif text-sm text-[#4B2E20]/80 dark:text-[#FFF5DE]/80">Church service at 9:00 AM · Reception follows immediately</p>
-                  <a href="/Blessing%20%26%20Gideon.pdf" download className="mt-8 inline-flex items-center justify-center rounded-sm border border-[#C9A227] bg-[#4B2E20] px-7 py-4 text-[10px] font-medium uppercase tracking-[0.25em] text-white shadow-lg transition-colors hover:bg-[#064E3B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C9A227]">Download invitation PDF</a>
+              <div className="relative mx-auto grid w-full max-w-5xl items-center gap-8 text-center md:grid-cols-[minmax(240px,0.85fr)_minmax(0,1.15fr)] md:gap-10 md:text-left">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.96, y: 18 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="mx-auto w-full max-w-[260px] sm:max-w-[320px] md:max-w-none"
+                >
+                  <div className="relative overflow-hidden border border-[#C9A227]/70 bg-[#10251D] p-2 shadow-2xl shadow-black/25">
+                    <img
+                      src="/wedding-media/_DSC6125.jpg"
+                      alt="Blessing and Gideon embracing in their traditional wedding attire"
+                      className="aspect-[4/5] w-full object-cover object-center"
+                    />
+                    <div aria-hidden="true" className="pointer-events-none absolute inset-4 border border-white/35" />
+                  </div>
+                </motion.div>
+
+                <div className="min-w-0">
+                  <p className="text-[9px] uppercase tracking-[0.42em] text-[#064E3B] dark:text-[#D9C17A]">Together with our families</p>
+                  <h2 className="mt-3 font-serif text-3xl leading-tight text-[#4B2E20] sm:text-4xl lg:text-5xl dark:text-[#FFF5DE]">Blessing Gabriel <span className="text-[#C9A227]">&amp;</span> Gideon Ihieve</h2>
+                  <p className="mt-3 font-serif text-lg italic text-[#064E3B] sm:text-xl dark:text-[#E7D6A2]">A day to remember</p>
+                  <div className="mx-auto my-5 h-px w-20 bg-[#C9A227] md:mx-0" />
+                  <div className="rounded-2xl border border-[#C9A227]/50 bg-[#FFFDF8]/65 px-5 py-6 shadow-2xl shadow-[#4B2E20]/10 backdrop-blur-sm dark:bg-[#10251D]/60 sm:px-7 sm:py-8">
+                    <p className="font-serif text-base leading-7 text-[#4B2E20]/90 sm:text-lg dark:text-[#FFF5DE]/90">We have found our Blessing, and we are coming together as one. With grateful hearts and God’s grace, we invite you to share in this beautiful new beginning.</p>
+                    <p className="mt-5 text-[10px] uppercase tracking-[0.25em] text-[#064E3B] sm:text-xs sm:tracking-[0.3em] dark:text-[#D9C17A]">Wednesday · 23 December 2026</p>
+                    <p className="mt-3 font-serif text-sm leading-6 text-[#4B2E20]/80 dark:text-[#FFF5DE]/80">Church service at 9:00 AM · Reception follows immediately</p>
+                    <a href="/Blessing%20%26%20Gideon.pdf" download className="mt-7 inline-flex items-center justify-center rounded-sm border border-[#C9A227] bg-[#4B2E20] px-6 py-3.5 text-[10px] font-medium uppercase tracking-[0.22em] text-white shadow-lg transition-colors hover:bg-[#064E3B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C9A227]">Download invitation PDF</a>
+                  </div>
                 </div>
               </div>
             </section>
