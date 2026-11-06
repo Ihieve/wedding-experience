@@ -1200,7 +1200,7 @@ export default function Home() {
         transition={{ delay: 0.15, duration: 0.6 }}
         className="mt-4 font-serif text-4xl text-[#4B2E20] sm:text-5xl"
       >
-        Our Gallery
+        Our Photos
       </motion.h2>
 
       <motion.div
@@ -1224,55 +1224,16 @@ export default function Home() {
       </motion.p>
     </div>
 
-    {/* Photo Grid */}
-    <div className="mt-12 grid grid-cols-2 gap-3">
-      {/* Large image */}
-      <motion.div
-        initial={{ opacity: 0, y: 25 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="relative col-span-2 h-[300px] overflow-hidden rounded-sm bg-[#FFFDF8]"
-      >
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-          <span className="text-3xl text-[#C9A227]">♡</span>
-
-          <p className="mt-3 text-[9px] uppercase tracking-[0.3em] text-[#4B2E20]/40">
-            Our photo
-          </p>
-        </div>
-
-        {/* Replace this div with Image when photos are available */}
-      </motion.div>
-
-      {/* Small image 1 */}
-      <motion.div
-        initial={{ opacity: 0, y: 25 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.15, duration: 0.6 }}
-        className="relative h-[210px] overflow-hidden rounded-sm bg-[#FFFDF8]"
-      >
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-xl text-[#C9A227]/70">✦</span>
-        </div>
-      </motion.div>
-
-      {/* Small image 2 */}
-      <motion.div
-        initial={{ opacity: 0, y: 25 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.25, duration: 0.6 }}
-        className="relative h-[210px] overflow-hidden rounded-sm bg-[#4B2E20]"
-      >
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="font-serif text-3xl text-[#C9A227]">
-            B & G
-          </span>
-        </div>
-      </motion.div>
-    </div>
+    {/* Personal wedding photos and guest-uploaded memories */}
+    <motion.div
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+      className="mt-12"
+    >
+      <WeddingGallery />
+    </motion.div>
 
     {/* =================================================
         #9 — GUEST MEMORIES
@@ -1350,7 +1311,7 @@ export default function Home() {
         </p>
       </div>
 
-      {/* Coming Soon upload area */}
+      {/* Guest photo upload area */}
       <div className="border-t border-[#C9A227]/20 bg-[#FFFDF8]/60 p-6">
         <div className="rounded-sm border border-dashed border-[#C9A227]/40 px-5 py-8 text-center">
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#4B2E20] text-[#C9A227]">
@@ -1367,28 +1328,12 @@ export default function Home() {
             Blessing Gabriel & Gideon Ihieve's special day.
           </p>
 
-          {/* Coming Soon button */}
+          {/* Guest photo uploader */}
          <div className="mt-6">
   <WeddingCamera />
 </div>
         </div>
       </div>
-    </motion.div>
-
-    {/* Guest gallery preview */}
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.7 }}
-      className="mt-10 text-center"
-    >
-      <p className="text-[9px] uppercase tracking-[0.3em] text-[#4B2E20]/40">
-        Your photos will appear here
-      </p>
-
-     <WeddingGallery />
-
     </motion.div>
 
     {/* Bottom message */}

@@ -237,7 +237,7 @@ export default function WeddingMemories() {
       {/* Slower carousel animation */}
       <style jsx global>{`
         .wedding-memory-track {
-          animation-duration: 100s !important;
+          animation-duration: 60s !important;
           animation-timing-function: linear !important;
         }
 

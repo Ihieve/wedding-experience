@@ -568,25 +568,140 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+// Your personal wedding photographs
+const personalPhotos = [
+    {
+        id: "personal-6125",
+        imageUrl: "/wedding-media/_DSC6125.jpg",
+        alt: "Blessing and Gideon in emerald and gold traditional attire"
+    },
+    {
+        id: "personal-6131",
+        imageUrl: "/wedding-media/_DSC6131.jpg",
+        alt: "A beautiful traditional wedding portrait"
+    },
+    {
+        id: "personal-6145",
+        imageUrl: "/wedding-media/_DSC6145.jpg",
+        alt: "A cherished portrait of the couple"
+    },
+    {
+        id: "personal-6147",
+        imageUrl: "/wedding-media/_DSC6147.jpg",
+        alt: "Blessing and Gideon together"
+    },
+    {
+        id: "personal-6150",
+        imageUrl: "/wedding-media/_DSC6150.jpg",
+        alt: "A full-length traditional wedding portrait"
+    },
+    {
+        id: "personal-6181",
+        imageUrl: "/wedding-media/_DSC6181.jpg",
+        alt: "Blessing in elegant burgundy traditional attire"
+    },
+    {
+        id: "personal-6189",
+        imageUrl: "/wedding-media/_DSC6189.jpg",
+        alt: "A beautiful bridal portrait"
+    },
+    {
+        id: "personal-6198",
+        imageUrl: "/wedding-media/_DSC6198.jpg",
+        alt: "The couple in traditional attire"
+    },
+    {
+        id: "personal-6209",
+        imageUrl: "/wedding-media/_DSC6209.jpg",
+        alt: "A traditional wedding moment"
+    },
+    {
+        id: "personal-6222",
+        imageUrl: "/wedding-media/_DSC6222.jpg",
+        alt: "A lovely couple portrait"
+    },
+    {
+        id: "personal-6230",
+        imageUrl: "/wedding-media/_DSC6230.jpg",
+        alt: "A romantic traditional portrait"
+    },
+    {
+        id: "personal-6230-bw",
+        imageUrl: "/wedding-media/_DSC6230BW.jpg",
+        alt: "A timeless black and white portrait"
+    },
+    {
+        id: "personal-6240",
+        imageUrl: "/wedding-media/_DSC6240.jpg",
+        alt: "A beautiful traditional wedding moment"
+    },
+    {
+        id: "personal-6252",
+        imageUrl: "/wedding-media/_DSC6252.jpg",
+        alt: "A playful couple portrait"
+    },
+    {
+        id: "personal-6286",
+        imageUrl: "/wedding-media/_DSC6286.jpg",
+        alt: "Blessing and Gideon in burgundy and red"
+    },
+    {
+        id: "personal-6304",
+        imageUrl: "/wedding-media/_DSC6304.jpg",
+        alt: "A romantic portrait of the couple"
+    },
+    {
+        id: "personal-6327",
+        imageUrl: "/wedding-media/_DSC6327.jpg",
+        alt: "Blessing in her elegant red dress"
+    },
+    {
+        id: "personal-6336",
+        imageUrl: "/wedding-media/_DSC6336.jpg",
+        alt: "Gideon in traditional attire"
+    }
+];
 function WeddingGallery() {
     _s();
-    const [photos, setPhotos] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [guestPhotos, setGuestPhotos] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [selectedIndex, setSelectedIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [failedImages, setFailedImages] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    // Personal photographs first, followed by guest contributions.
+    const photos = [
+        ...personalPhotos,
+        ...guestPhotos
+    ];
+    // Real-time Firebase gallery subscription.
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "WeddingGallery.useEffect": ()=>{
-            const photosQuery = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["query"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$common$2d$DugxmK6F$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__aR__as__collection$3e$__["collection"])(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$firebase$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["db"], "weddingGallery"), (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["orderBy"])("createdAt", "desc"));
-            const unsubscribe = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["onSnapshot"])(photosQuery, {
+            const unsubscribe = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["onSnapshot"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$common$2d$DugxmK6F$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__aR__as__collection$3e$__["collection"])(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$firebase$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["db"], "weddingGallery"), {
                 "WeddingGallery.useEffect.unsubscribe": (snapshot)=>{
-                    const galleryPhotos = snapshot.docs.map({
-                        "WeddingGallery.useEffect.unsubscribe.galleryPhotos": (doc)=>({
+                    const uploadedPhotos = snapshot.docs.map({
+                        "WeddingGallery.useEffect.unsubscribe.uploadedPhotos": (doc)=>{
+                            const data = doc.data();
+                            return {
                                 id: doc.id,
-                                ...doc.data()
-                            })
-                    }["WeddingGallery.useEffect.unsubscribe.galleryPhotos"]);
-                    setPhotos(galleryPhotos);
+                                imageUrl: data.imageUrl,
+                                alt: data.alt || "A beautiful wedding memory",
+                                createdAt: data.createdAt
+                            };
+                        }
+                    }["WeddingGallery.useEffect.unsubscribe.uploadedPhotos"]).filter({
+                        "WeddingGallery.useEffect.unsubscribe.uploadedPhotos": (photo)=>typeof photo.imageUrl === "string" && photo.imageUrl.trim() !== ""
+                    }["WeddingGallery.useEffect.unsubscribe.uploadedPhotos"]).sort({
+                        "WeddingGallery.useEffect.unsubscribe.uploadedPhotos": (a, b)=>(b.createdAt?.seconds ?? 0) - (a.createdAt?.seconds ?? 0)
+                    }["WeddingGallery.useEffect.unsubscribe.uploadedPhotos"]);
+                    setGuestPhotos(uploadedPhotos);
+                    setError("");
+                    setLoading(false);
                 }
             }["WeddingGallery.useEffect.unsubscribe"], {
-                "WeddingGallery.useEffect.unsubscribe": (error)=>{
-                    console.error("Gallery error:", error);
+                "WeddingGallery.useEffect.unsubscribe": (firebaseError)=>{
+                    console.error("Wedding gallery error:", firebaseError);
+                    setError("Guest photos could not be loaded. Please try again later.");
+                    setLoading(false);
                 }
             }["WeddingGallery.useEffect.unsubscribe"]);
             return ({
@@ -594,71 +709,286 @@ function WeddingGallery() {
             })["WeddingGallery.useEffect"];
         }
     }["WeddingGallery.useEffect"], []);
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "mt-10",
-        children: photos.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "rounded-sm bg-[#E8D8C3] px-6 py-12 text-center",
-            children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                    className: "text-2xl text-[#C9A227]",
-                    children: "♡"
-                }, void 0, false, {
-                    fileName: "[project]/app/components/WeddingGallery.tsx",
-                    lineNumber: 52,
-                    columnNumber: 11
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                    className: "mt-4 text-[9px] uppercase tracking-[0.3em] text-[#4A2C24]/40",
-                    children: "Your photos will appear here"
-                }, void 0, false, {
-                    fileName: "[project]/app/components/WeddingGallery.tsx",
-                    lineNumber: 56,
-                    columnNumber: 11
-                }, this)
-            ]
-        }, void 0, true, {
-            fileName: "[project]/app/components/WeddingGallery.tsx",
-            lineNumber: 51,
-            columnNumber: 9
-        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "grid grid-cols-2 gap-3 sm:grid-cols-3",
-            children: photos.map((photo)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "group relative aspect-square overflow-hidden rounded-sm bg-[#E8D8C3]",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                            src: photo.imageUrl,
-                            alt: "Wedding memory",
-                            className: "h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        }, void 0, false, {
-                            fileName: "[project]/app/components/WeddingGallery.tsx",
-                            lineNumber: 67,
-                            columnNumber: 15
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "pointer-events-none absolute inset-0 bg-gradient-to-t from-[#4A2C24]/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                        }, void 0, false, {
-                            fileName: "[project]/app/components/WeddingGallery.tsx",
-                            lineNumber: 73,
-                            columnNumber: 15
-                        }, this)
-                    ]
-                }, photo.id, true, {
-                    fileName: "[project]/app/components/WeddingGallery.tsx",
-                    lineNumber: 63,
-                    columnNumber: 13
-                }, this))
-        }, void 0, false, {
-            fileName: "[project]/app/components/WeddingGallery.tsx",
-            lineNumber: 61,
-            columnNumber: 9
-        }, this)
-    }, void 0, false, {
+    // Keyboard navigation for the photo preview.
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "WeddingGallery.useEffect": ()=>{
+            if (selectedIndex === null) return;
+            const handleKeyDown = {
+                "WeddingGallery.useEffect.handleKeyDown": (event)=>{
+                    if (event.key === "Escape") {
+                        setSelectedIndex(null);
+                    }
+                    if (event.key === "ArrowRight") {
+                        setSelectedIndex({
+                            "WeddingGallery.useEffect.handleKeyDown": (current)=>current === null ? null : (current + 1) % photos.length
+                        }["WeddingGallery.useEffect.handleKeyDown"]);
+                    }
+                    if (event.key === "ArrowLeft") {
+                        setSelectedIndex({
+                            "WeddingGallery.useEffect.handleKeyDown": (current)=>current === null ? null : (current - 1 + photos.length) % photos.length
+                        }["WeddingGallery.useEffect.handleKeyDown"]);
+                    }
+                }
+            }["WeddingGallery.useEffect.handleKeyDown"];
+            document.addEventListener("keydown", handleKeyDown);
+            return ({
+                "WeddingGallery.useEffect": ()=>{
+                    document.removeEventListener("keydown", handleKeyDown);
+                }
+            })["WeddingGallery.useEffect"];
+        }
+    }["WeddingGallery.useEffect"], [
+        selectedIndex,
+        photos.length
+    ]);
+    const showPrevious = ()=>{
+        setSelectedIndex((current)=>current === null ? null : (current - 1 + photos.length) % photos.length);
+    };
+    const showNext = ()=>{
+        setSelectedIndex((current)=>current === null ? null : (current + 1) % photos.length);
+    };
+    const selectedPhoto = selectedIndex !== null ? photos[selectedIndex] : null;
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "mt-10",
+                children: [
+                    loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4",
+                        children: Array.from({
+                            length: 6
+                        }).map((_, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "aspect-square animate-pulse rounded-sm bg-[#E8D8C3]/70"
+                            }, index, false, {
+                                fileName: "[project]/app/components/WeddingGallery.tsx",
+                                lineNumber: 219,
+                                columnNumber: 15
+                            }, this))
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/WeddingGallery.tsx",
+                        lineNumber: 217,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: `grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 ${loading ? "hidden" : ""}`,
+                        children: photos.map((photo, index)=>{
+                            const imageFailed = failedImages.includes(photo.id);
+                            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                type: "button",
+                                onClick: ()=>setSelectedIndex(index),
+                                disabled: imageFailed,
+                                "aria-label": `View ${photo.alt}`,
+                                className: "group relative aspect-square overflow-hidden rounded-sm bg-[#E8D8C3] outline-none transition-all duration-300 hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-[#C9A227] focus-visible:ring-offset-2 disabled:cursor-not-allowed",
+                                children: [
+                                    !imageFailed ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                        src: photo.imageUrl,
+                                        alt: photo.alt,
+                                        loading: index < 6 ? "eager" : "lazy",
+                                        decoding: "async",
+                                        onError: ()=>setFailedImages((current)=>current.includes(photo.id) ? current : [
+                                                    ...current,
+                                                    photo.id
+                                                ]),
+                                        className: "h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/components/WeddingGallery.tsx",
+                                        lineNumber: 246,
+                                        columnNumber: 19
+                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex h-full flex-col items-center justify-center",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-2xl text-[#C9A227]",
+                                                children: "♡"
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/components/WeddingGallery.tsx",
+                                                lineNumber: 262,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "mt-2 text-[9px] text-[#4A2C24]/50",
+                                                children: "Image unavailable"
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/components/WeddingGallery.tsx",
+                                                lineNumber: 263,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/components/WeddingGallery.tsx",
+                                        lineNumber: 261,
+                                        columnNumber: 19
+                                    }, this),
+                                    !imageFailed && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "absolute inset-0 flex items-end bg-gradient-to-t from-[#4A2C24]/50 via-transparent to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "text-[9px] uppercase tracking-[0.2em] text-white",
+                                            children: "View photo"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/WeddingGallery.tsx",
+                                            lineNumber: 271,
+                                            columnNumber: 21
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/components/WeddingGallery.tsx",
+                                        lineNumber: 270,
+                                        columnNumber: 19
+                                    }, this)
+                                ]
+                            }, photo.id, true, {
+                                fileName: "[project]/app/components/WeddingGallery.tsx",
+                                lineNumber: 237,
+                                columnNumber: 15
+                            }, this);
+                        })
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/WeddingGallery.tsx",
+                        lineNumber: 228,
+                        columnNumber: 9
+                    }, this),
+                    !loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "mt-6 flex items-center justify-between",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-[9px] uppercase tracking-[0.25em] text-[#4A2C24]/50",
+                                children: "Captured memories"
+                            }, void 0, false, {
+                                fileName: "[project]/app/components/WeddingGallery.tsx",
+                                lineNumber: 284,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "text-[10px] text-[#064E3B]",
+                                children: [
+                                    photos.length,
+                                    " ",
+                                    photos.length === 1 ? "Photo" : "Photos"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/app/components/WeddingGallery.tsx",
+                                lineNumber: 288,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/components/WeddingGallery.tsx",
+                        lineNumber: 283,
+                        columnNumber: 11
+                    }, this),
+                    !loading && error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        role: "status",
+                        className: "mt-4 text-center text-xs text-[#4A2C24]/60",
+                        children: error
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/WeddingGallery.tsx",
+                        lineNumber: 296,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/app/components/WeddingGallery.tsx",
+                lineNumber: 214,
+                columnNumber: 7
+            }, this),
+            selectedPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                role: "dialog",
+                "aria-modal": "true",
+                "aria-label": "Wedding photo preview",
+                onClick: ()=>setSelectedIndex(null),
+                className: "fixed inset-0 z-[200] flex items-center justify-center bg-[#1B1714]/95 p-4 backdrop-blur-sm sm:p-8",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        type: "button",
+                        onClick: ()=>setSelectedIndex(null),
+                        "aria-label": "Close preview",
+                        className: "absolute right-5 top-5 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-2xl text-white hover:bg-white/20",
+                        children: "×"
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/WeddingGallery.tsx",
+                        lineNumber: 314,
+                        columnNumber: 11
+                    }, this),
+                    photos.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        type: "button",
+                        onClick: (event)=>{
+                            event.stopPropagation();
+                            showPrevious();
+                        },
+                        "aria-label": "Previous photo",
+                        className: "absolute left-3 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-2xl text-white hover:bg-white/20 sm:left-6",
+                        children: "‹"
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/WeddingGallery.tsx",
+                        lineNumber: 324,
+                        columnNumber: 13
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex max-h-full w-full max-w-5xl flex-col items-center",
+                        onClick: (event)=>event.stopPropagation(),
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                src: selectedPhoto.imageUrl,
+                                alt: selectedPhoto.alt,
+                                className: "max-h-[78vh] max-w-full rounded-sm object-contain shadow-2xl"
+                            }, void 0, false, {
+                                fileName: "[project]/app/components/WeddingGallery.tsx",
+                                lineNumber: 341,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "mt-5 text-center font-serif text-sm italic text-white/80",
+                                children: selectedPhoto.alt
+                            }, void 0, false, {
+                                fileName: "[project]/app/components/WeddingGallery.tsx",
+                                lineNumber: 347,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "mt-2 text-[10px] uppercase tracking-[0.3em] text-white/45",
+                                children: [
+                                    selectedIndex + 1,
+                                    " of ",
+                                    photos.length
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/app/components/WeddingGallery.tsx",
+                                lineNumber: 351,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/components/WeddingGallery.tsx",
+                        lineNumber: 337,
+                        columnNumber: 11
+                    }, this),
+                    photos.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        type: "button",
+                        onClick: (event)=>{
+                            event.stopPropagation();
+                            showNext();
+                        },
+                        "aria-label": "Next photo",
+                        className: "absolute right-3 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-2xl text-white hover:bg-white/20 sm:right-6",
+                        children: "›"
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/WeddingGallery.tsx",
+                        lineNumber: 357,
+                        columnNumber: 13
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/app/components/WeddingGallery.tsx",
+                lineNumber: 307,
+                columnNumber: 9
+            }, this)
+        ]
+    }, void 0, true, {
         fileName: "[project]/app/components/WeddingGallery.tsx",
-        lineNumber: 49,
+        lineNumber: 213,
         columnNumber: 5
     }, this);
 }
-_s(WeddingGallery, "rNJeiEBnoDDbCNHI2MVPxiP450E=");
+_s(WeddingGallery, "qq+34CiT2oHShr7BFohclNrBTlc=");
 _c = WeddingGallery;
 var _c;
 __turbopack_context__.k.register(_c, "WeddingGallery");
@@ -771,11 +1101,11 @@ const videos = [
 function WeddingMemories() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         id: "memories",
-        className: "jsx-ae73ce15ac755dd0" + " " + "relative isolate overflow-hidden bg-[#F8F3E9] px-5 py-20 sm:px-8 sm:py-28",
+        className: "jsx-9c2babdcc1cad7d8" + " " + "relative isolate overflow-hidden bg-[#F8F3E9] px-5 py-20 sm:px-8 sm:py-28",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 "aria-hidden": "true",
-                className: "jsx-ae73ce15ac755dd0" + " " + "pointer-events-none absolute inset-0 -z-20 overflow-hidden",
+                className: "jsx-9c2babdcc1cad7d8" + " " + "pointer-events-none absolute inset-0 -z-20 overflow-hidden",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("video", {
                     autoPlay: true,
                     muted: true,
@@ -783,11 +1113,11 @@ function WeddingMemories() {
                     playsInline: true,
                     preload: "metadata",
                     tabIndex: -1,
-                    className: "jsx-ae73ce15ac755dd0" + " " + "h-full w-full object-cover opacity-25",
+                    className: "jsx-9c2babdcc1cad7d8" + " " + "h-full w-full object-cover opacity-25",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("source", {
                         src: "/wedding-media/lv_0_20261028144344.mp4",
                         type: "video/mp4",
-                        className: "jsx-ae73ce15ac755dd0"
+                        className: "jsx-9c2babdcc1cad7d8"
                     }, void 0, false, {
                         fileName: "[project]/app/components/WeddingMemories.tsx",
                         lineNumber: 115,
@@ -805,28 +1135,28 @@ function WeddingMemories() {
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 "aria-hidden": "true",
-                className: "jsx-ae73ce15ac755dd0" + " " + "pointer-events-none absolute inset-0 -z-10 bg-[#FFF9EF]/85 dark:bg-[#10251D]/80"
+                className: "jsx-9c2babdcc1cad7d8" + " " + "pointer-events-none absolute inset-0 -z-10 bg-[#FFF9EF]/85 dark:bg-[#10251D]/80"
             }, void 0, false, {
                 fileName: "[project]/app/components/WeddingMemories.tsx",
                 lineNumber: 122,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "jsx-ae73ce15ac755dd0" + " " + "pointer-events-none absolute -left-24 top-20 h-64 w-64 rounded-full bg-[#064E3B]/[0.06] blur-3xl"
+                className: "jsx-9c2babdcc1cad7d8" + " " + "pointer-events-none absolute -left-24 top-20 h-64 w-64 rounded-full bg-[#064E3B]/[0.06] blur-3xl"
             }, void 0, false, {
                 fileName: "[project]/app/components/WeddingMemories.tsx",
                 lineNumber: 127,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "jsx-ae73ce15ac755dd0" + " " + "pointer-events-none absolute -right-24 bottom-10 h-64 w-64 rounded-full bg-[#C9A227]/[0.10] blur-3xl"
+                className: "jsx-9c2babdcc1cad7d8" + " " + "pointer-events-none absolute -right-24 bottom-10 h-64 w-64 rounded-full bg-[#C9A227]/[0.10] blur-3xl"
             }, void 0, false, {
                 fileName: "[project]/app/components/WeddingMemories.tsx",
                 lineNumber: 129,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "jsx-ae73ce15ac755dd0" + " " + "relative mx-auto max-w-6xl",
+                className: "jsx-9c2babdcc1cad7d8" + " " + "relative mx-auto max-w-6xl",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
                         initial: {
@@ -846,7 +1176,7 @@ function WeddingMemories() {
                         className: "mx-auto max-w-2xl text-center",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "jsx-ae73ce15ac755dd0" + " " + "text-[10px] uppercase tracking-[0.42em] text-[#064E3B]",
+                                className: "jsx-9c2babdcc1cad7d8" + " " + "text-[10px] uppercase tracking-[0.42em] text-[#064E3B]",
                                 children: "Little moments, forever memories"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/WeddingMemories.tsx",
@@ -854,7 +1184,7 @@ function WeddingMemories() {
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                className: "jsx-ae73ce15ac755dd0" + " " + "mt-4 font-serif text-4xl text-[#4B2E20] sm:text-5xl",
+                                className: "jsx-9c2babdcc1cad7d8" + " " + "mt-4 font-serif text-4xl text-[#4B2E20] sm:text-5xl",
                                 children: "Our Memories"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/WeddingMemories.tsx",
@@ -862,14 +1192,14 @@ function WeddingMemories() {
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "jsx-ae73ce15ac755dd0" + " " + "mx-auto my-6 h-px w-16 bg-[#C9A227]"
+                                className: "jsx-9c2babdcc1cad7d8" + " " + "mx-auto my-6 h-px w-16 bg-[#C9A227]"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/WeddingMemories.tsx",
                                 lineNumber: 148,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "jsx-ae73ce15ac755dd0" + " " + "font-serif text-base leading-7 text-[#4B2E20]/70 sm:text-lg",
+                                className: "jsx-9c2babdcc1cad7d8" + " " + "font-serif text-base leading-7 text-[#4B2E20]/70 sm:text-lg",
                                 children: "A collection of moments and videos we want to share with the people we love."
                             }, void 0, false, {
                                 fileName: "[project]/app/components/WeddingMemories.tsx",
@@ -883,7 +1213,7 @@ function WeddingMemories() {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "jsx-ae73ce15ac755dd0" + " " + "mt-12 grid gap-5 md:grid-cols-2",
+                        className: "jsx-9c2babdcc1cad7d8" + " " + "mt-12 grid gap-5 md:grid-cols-2",
                         children: videos.map((video, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].article, {
                                 initial: {
                                     opacity: 0,
@@ -910,12 +1240,12 @@ function WeddingMemories() {
                                         onError: (event)=>{
                                             console.error(`Unable to load wedding video: ${video.src}`, event.currentTarget.error);
                                         },
-                                        className: "jsx-ae73ce15ac755dd0" + " " + "aspect-video w-full rounded-xl bg-[#1D2B24] object-contain",
+                                        className: "jsx-9c2babdcc1cad7d8" + " " + "aspect-video w-full rounded-xl bg-[#1D2B24] object-contain",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("source", {
                                                 src: video.src,
                                                 type: "video/mp4",
-                                                className: "jsx-ae73ce15ac755dd0"
+                                                className: "jsx-9c2babdcc1cad7d8"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/components/WeddingMemories.tsx",
                                                 lineNumber: 183,
@@ -929,7 +1259,7 @@ function WeddingMemories() {
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "jsx-ae73ce15ac755dd0" + " " + "px-2 pb-1 pt-4 font-serif text-xl text-[#4B2E20]",
+                                        className: "jsx-9c2babdcc1cad7d8" + " " + "px-2 pb-1 pt-4 font-serif text-xl text-[#4B2E20]",
                                         children: video.title
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/WeddingMemories.tsx",
@@ -948,17 +1278,17 @@ function WeddingMemories() {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "jsx-ae73ce15ac755dd0" + " " + "mt-16 flex items-center gap-4",
+                        className: "jsx-9c2babdcc1cad7d8" + " " + "mt-16 flex items-center gap-4",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "jsx-ae73ce15ac755dd0" + " " + "h-px flex-1 bg-[#C9A227]/50"
+                                className: "jsx-9c2babdcc1cad7d8" + " " + "h-px flex-1 bg-[#C9A227]/50"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/WeddingMemories.tsx",
                                 lineNumber: 196,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                className: "jsx-ae73ce15ac755dd0" + " " + "font-serif text-2xl text-[#4B2E20] sm:text-3xl",
+                                className: "jsx-9c2babdcc1cad7d8" + " " + "font-serif text-2xl text-[#4B2E20] sm:text-3xl",
                                 children: "Captured moments"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/WeddingMemories.tsx",
@@ -966,7 +1296,7 @@ function WeddingMemories() {
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "jsx-ae73ce15ac755dd0" + " " + "h-px flex-1 bg-[#C9A227]/50"
+                                className: "jsx-9c2babdcc1cad7d8" + " " + "h-px flex-1 bg-[#C9A227]/50"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/WeddingMemories.tsx",
                                 lineNumber: 202,
@@ -980,21 +1310,21 @@ function WeddingMemories() {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         "aria-label": "Continuously sliding wedding photo gallery",
-                        className: "jsx-ae73ce15ac755dd0" + " " + "wedding-memory-marquee mt-8",
+                        className: "jsx-9c2babdcc1cad7d8" + " " + "wedding-memory-marquee mt-8",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "jsx-ae73ce15ac755dd0" + " " + "wedding-memory-track",
+                            className: "jsx-9c2babdcc1cad7d8" + " " + "wedding-memory-track",
                             children: [
                                 ...photos,
                                 ...photos
                             ].map((photo, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("figure", {
-                                    className: "jsx-ae73ce15ac755dd0" + " " + "wedding-memory-slide",
+                                    className: "jsx-9c2babdcc1cad7d8" + " " + "wedding-memory-slide",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                         src: photo.src,
                                         alt: photo.alt,
                                         loading: index < photos.length ? "eager" : "lazy",
                                         decoding: "async",
                                         draggable: false,
-                                        className: "jsx-ae73ce15ac755dd0"
+                                        className: "jsx-9c2babdcc1cad7d8"
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/WeddingMemories.tsx",
                                         lineNumber: 216,
@@ -1016,7 +1346,7 @@ function WeddingMemories() {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "jsx-ae73ce15ac755dd0" + " " + "mt-4 text-center text-xs text-[#4B2E20]/55",
+                        className: "jsx-9c2babdcc1cad7d8" + " " + "mt-4 text-center text-xs text-[#4B2E20]/55",
                         children: "A continuous stream of our favorite moments · Swipe to explore"
                     }, void 0, false, {
                         fileName: "[project]/app/components/WeddingMemories.tsx",
@@ -1024,7 +1354,7 @@ function WeddingMemories() {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "jsx-ae73ce15ac755dd0" + " " + "mt-5 text-center text-xs text-[#4B2E20]/55",
+                        className: "jsx-9c2babdcc1cad7d8" + " " + "mt-5 text-center text-xs text-[#4B2E20]/55",
                         children: "With love, Blessing & Gideon · 23 December 2026"
                     }, void 0, false, {
                         fileName: "[project]/app/components/WeddingMemories.tsx",
@@ -1038,8 +1368,8 @@ function WeddingMemories() {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                id: "ae73ce15ac755dd0",
-                children: ".wedding-memory-track{animation-duration:100s!important;animation-timing-function:linear!important}.wedding-memory-marquee:hover .wedding-memory-track{animation-play-state:paused}.wedding-memory-slide img{-webkit-user-select:none;user-select:none;-webkit-user-drag:none}@media (prefers-reduced-motion:reduce){.wedding-memory-track{animation:none!important}}"
+                id: "9c2babdcc1cad7d8",
+                children: ".wedding-memory-track{animation-duration:60s!important;animation-timing-function:linear!important}.wedding-memory-marquee:hover .wedding-memory-track{animation-play-state:paused}.wedding-memory-slide img{-webkit-user-select:none;user-select:none;-webkit-user-drag:none}@media (prefers-reduced-motion:reduce){.wedding-memory-track{animation:none!important}}"
             }, void 0, false, void 0, this)
         ]
     }, void 0, true, {
@@ -4303,7 +4633,7 @@ function Home() {
                                                                 duration: 0.6
                                                             },
                                                             className: "mt-4 font-serif text-4xl text-[#4B2E20] sm:text-5xl",
-                                                            children: "Our Gallery"
+                                                            children: "Our Photos"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
                                                             lineNumber: 1196,
@@ -4363,131 +4693,28 @@ function Home() {
                                                     lineNumber: 1185,
                                                     columnNumber: 5
                                                 }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "mt-12 grid grid-cols-2 gap-3",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
-                                                            initial: {
-                                                                opacity: 0,
-                                                                y: 25
-                                                            },
-                                                            whileInView: {
-                                                                opacity: 1,
-                                                                y: 0
-                                                            },
-                                                            viewport: {
-                                                                once: true
-                                                            },
-                                                            transition: {
-                                                                duration: 0.6
-                                                            },
-                                                            className: "relative col-span-2 h-[300px] overflow-hidden rounded-sm bg-[#FFFDF8]",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "absolute inset-0 flex flex-col items-center justify-center text-center",
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                        className: "text-3xl text-[#C9A227]",
-                                                                        children: "♡"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/app/page.tsx",
-                                                                        lineNumber: 1238,
-                                                                        columnNumber: 11
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                        className: "mt-3 text-[9px] uppercase tracking-[0.3em] text-[#4B2E20]/40",
-                                                                        children: "Our photo"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/app/page.tsx",
-                                                                        lineNumber: 1240,
-                                                                        columnNumber: 11
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/app/page.tsx",
-                                                                lineNumber: 1237,
-                                                                columnNumber: 9
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 1230,
-                                                            columnNumber: 7
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
-                                                            initial: {
-                                                                opacity: 0,
-                                                                y: 25
-                                                            },
-                                                            whileInView: {
-                                                                opacity: 1,
-                                                                y: 0
-                                                            },
-                                                            viewport: {
-                                                                once: true
-                                                            },
-                                                            transition: {
-                                                                delay: 0.15,
-                                                                duration: 0.6
-                                                            },
-                                                            className: "relative h-[210px] overflow-hidden rounded-sm bg-[#FFFDF8]",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "absolute inset-0 flex items-center justify-center",
-                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-xl text-[#C9A227]/70",
-                                                                    children: "✦"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 1257,
-                                                                    columnNumber: 11
-                                                                }, this)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/page.tsx",
-                                                                lineNumber: 1256,
-                                                                columnNumber: 9
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 1249,
-                                                            columnNumber: 7
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
-                                                            initial: {
-                                                                opacity: 0,
-                                                                y: 25
-                                                            },
-                                                            whileInView: {
-                                                                opacity: 1,
-                                                                y: 0
-                                                            },
-                                                            viewport: {
-                                                                once: true
-                                                            },
-                                                            transition: {
-                                                                delay: 0.25,
-                                                                duration: 0.6
-                                                            },
-                                                            className: "relative h-[210px] overflow-hidden rounded-sm bg-[#4B2E20]",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "absolute inset-0 flex items-center justify-center",
-                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "font-serif text-3xl text-[#C9A227]",
-                                                                    children: "B & G"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 1270,
-                                                                    columnNumber: 11
-                                                                }, this)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/page.tsx",
-                                                                lineNumber: 1269,
-                                                                columnNumber: 9
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 1262,
-                                                            columnNumber: 7
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                                    initial: {
+                                                        opacity: 0,
+                                                        y: 25
+                                                    },
+                                                    whileInView: {
+                                                        opacity: 1,
+                                                        y: 0
+                                                    },
+                                                    viewport: {
+                                                        once: true
+                                                    },
+                                                    transition: {
+                                                        duration: 0.7
+                                                    },
+                                                    className: "mt-12",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$WeddingGallery$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                                                        fileName: "[project]/app/page.tsx",
+                                                        lineNumber: 1235,
+                                                        columnNumber: 7
+                                                    }, this)
+                                                }, void 0, false, {
                                                     fileName: "[project]/app/page.tsx",
                                                     lineNumber: 1228,
                                                     columnNumber: 5
@@ -4518,7 +4745,7 @@ function Home() {
                                                                     children: "✦"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 1289,
+                                                                    lineNumber: 1250,
                                                                     columnNumber: 9
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4526,7 +4753,7 @@ function Home() {
                                                                     children: "✦"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 1293,
+                                                                    lineNumber: 1254,
                                                                     columnNumber: 9
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4547,7 +4774,7 @@ function Home() {
                                                                                 strokeWidth: "2.5"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/page.tsx",
-                                                                                lineNumber: 1305,
+                                                                                lineNumber: 1266,
                                                                                 columnNumber: 13
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
@@ -4558,7 +4785,7 @@ function Home() {
                                                                                 strokeWidth: "2.5"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/page.tsx",
-                                                                                lineNumber: 1315,
+                                                                                lineNumber: 1276,
                                                                                 columnNumber: 13
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -4568,7 +4795,7 @@ function Home() {
                                                                                 strokeLinejoin: "round"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/page.tsx",
-                                                                                lineNumber: 1323,
+                                                                                lineNumber: 1284,
                                                                                 columnNumber: 13
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
@@ -4578,18 +4805,18 @@ function Home() {
                                                                                 fill: "currentColor"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/page.tsx",
-                                                                                lineNumber: 1330,
+                                                                                lineNumber: 1291,
                                                                                 columnNumber: 13
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/page.tsx",
-                                                                        lineNumber: 1299,
+                                                                        lineNumber: 1260,
                                                                         columnNumber: 11
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 1298,
+                                                                    lineNumber: 1259,
                                                                     columnNumber: 9
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4597,7 +4824,7 @@ function Home() {
                                                                     children: "Your memories matter"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 1339,
+                                                                    lineNumber: 1300,
                                                                     columnNumber: 9
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -4605,7 +4832,7 @@ function Home() {
                                                                     children: "See It Through Your Eyes"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 1343,
+                                                                    lineNumber: 1304,
                                                                     columnNumber: 9
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4613,13 +4840,13 @@ function Home() {
                                                                     children: "Take a photo, capture a moment and share it with us. Your memories will become part of our wedding story."
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 1347,
+                                                                    lineNumber: 1308,
                                                                     columnNumber: 9
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 1288,
+                                                            lineNumber: 1249,
                                                             columnNumber: 7
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4632,7 +4859,7 @@ function Home() {
                                                                         children: "+"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/page.tsx",
-                                                                        lineNumber: 1356,
+                                                                        lineNumber: 1317,
                                                                         columnNumber: 11
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
@@ -4640,7 +4867,7 @@ function Home() {
                                                                         children: "Share Your Photos"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/page.tsx",
-                                                                        lineNumber: 1360,
+                                                                        lineNumber: 1321,
                                                                         columnNumber: 11
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4649,77 +4876,43 @@ function Home() {
                                                                             "Upload your favorite moments from",
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                                                 fileName: "[project]/app/page.tsx",
-                                                                                lineNumber: 1366,
+                                                                                lineNumber: 1327,
                                                                                 columnNumber: 13
                                                                             }, this),
                                                                             "Blessing Gabriel & Gideon Ihieve's special day."
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/page.tsx",
-                                                                        lineNumber: 1364,
+                                                                        lineNumber: 1325,
                                                                         columnNumber: 11
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                         className: "mt-6",
                                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$WeddingCamera$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                                             fileName: "[project]/app/page.tsx",
-                                                                            lineNumber: 1372,
+                                                                            lineNumber: 1333,
                                                                             columnNumber: 3
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/page.tsx",
-                                                                        lineNumber: 1371,
+                                                                        lineNumber: 1332,
                                                                         columnNumber: 10
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/page.tsx",
-                                                                lineNumber: 1355,
+                                                                lineNumber: 1316,
                                                                 columnNumber: 9
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 1354,
+                                                            lineNumber: 1315,
                                                             columnNumber: 7
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 1280,
-                                                    columnNumber: 5
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
-                                                    initial: {
-                                                        opacity: 0
-                                                    },
-                                                    whileInView: {
-                                                        opacity: 1
-                                                    },
-                                                    viewport: {
-                                                        once: true
-                                                    },
-                                                    transition: {
-                                                        delay: 0.7
-                                                    },
-                                                    className: "mt-10 text-center",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "text-[9px] uppercase tracking-[0.3em] text-[#4B2E20]/40",
-                                                            children: "Your photos will appear here"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 1386,
-                                                            columnNumber: 7
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$WeddingGallery$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
-                                                            fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 1390,
-                                                            columnNumber: 6
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 1379,
+                                                    lineNumber: 1241,
                                                     columnNumber: 5
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -4742,7 +4935,7 @@ function Home() {
                                                             children: "✦"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 1402,
+                                                            lineNumber: 1347,
                                                             columnNumber: 7
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4751,20 +4944,20 @@ function Home() {
                                                                 "One wedding.",
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 1406,
+                                                                    lineNumber: 1351,
                                                                     columnNumber: 9
                                                                 }, this),
                                                                 "Hundreds of memories."
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 1404,
+                                                            lineNumber: 1349,
                                                             columnNumber: 7
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 1395,
+                                                    lineNumber: 1340,
                                                     columnNumber: 5
                                                 }, this)
                                             ]
@@ -4789,20 +4982,20 @@ function Home() {
                                                     className: "absolute -left-20 top-20 h-48 w-48 rounded-full border border-[#C9A227]/20"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 1419,
+                                                    lineNumber: 1364,
                                                     columnNumber: 5
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "absolute -right-20 bottom-20 h-48 w-48 rounded-full border border-[#064E3B]/15"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 1420,
+                                                    lineNumber: 1365,
                                                     columnNumber: 5
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/page.tsx",
-                                            lineNumber: 1418,
+                                            lineNumber: 1363,
                                             columnNumber: 3
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4816,7 +5009,7 @@ function Home() {
                                                             children: "Leave a little love"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 1424,
+                                                            lineNumber: 1369,
                                                             columnNumber: 7
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -4824,14 +5017,14 @@ function Home() {
                                                             children: "Guestbook"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 1425,
+                                                            lineNumber: 1370,
                                                             columnNumber: 7
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "mx-auto my-7 h-px w-16 bg-[#C9A227]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 1426,
+                                                            lineNumber: 1371,
                                                             columnNumber: 7
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4840,37 +5033,37 @@ function Home() {
                                                                 "Your words will become part of our forever memories.",
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 1428,
+                                                                    lineNumber: 1373,
                                                                     columnNumber: 61
                                                                 }, this),
                                                                 "Choose whether to share them publicly or keep them private."
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 1427,
+                                                            lineNumber: 1372,
                                                             columnNumber: 7
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 1423,
+                                                    lineNumber: 1368,
                                                     columnNumber: 5
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$GuestbookForm$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 1431,
+                                                    lineNumber: 1376,
                                                     columnNumber: 5
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/page.tsx",
-                                            lineNumber: 1422,
+                                            lineNumber: 1367,
                                             columnNumber: 3
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 1417,
+                                    lineNumber: 1362,
                                     columnNumber: 1
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -4883,7 +5076,7 @@ function Home() {
                                                 children: "Will you join us?"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 1441,
+                                                lineNumber: 1386,
                                                 columnNumber: 5
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -4891,14 +5084,14 @@ function Home() {
                                                 children: "RSVP"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 1445,
+                                                lineNumber: 1390,
                                                 columnNumber: 5
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "mx-auto my-7 h-px w-16 bg-[#C9A227]"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 1449,
+                                                lineNumber: 1394,
                                                 columnNumber: 5
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4907,14 +5100,14 @@ function Home() {
                                                     "Your presence would make our celebration",
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 1453,
+                                                        lineNumber: 1398,
                                                         columnNumber: 7
                                                     }, this),
                                                     "even more special."
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 1451,
+                                                lineNumber: 1396,
                                                 columnNumber: 5
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4925,7 +5118,7 @@ function Home() {
                                                         children: "♡"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 1458,
+                                                        lineNumber: 1403,
                                                         columnNumber: 7
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -4933,7 +5126,7 @@ function Home() {
                                                         children: "Confirm Your Attendance"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 1462,
+                                                        lineNumber: 1407,
                                                         columnNumber: 7
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4942,14 +5135,14 @@ function Home() {
                                                             "Let us know if you'll be celebrating",
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                                 fileName: "[project]/app/page.tsx",
-                                                                lineNumber: 1468,
+                                                                lineNumber: 1413,
                                                                 columnNumber: 9
                                                             }, this),
                                                             "with us on Wednesday, 23 December 2026."
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 1466,
+                                                        lineNumber: 1411,
                                                         columnNumber: 7
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4957,7 +5150,7 @@ function Home() {
                                                         children: "RSVP / Contact"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 1472,
+                                                        lineNumber: 1417,
                                                         columnNumber: 7
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4969,7 +5162,7 @@ function Home() {
                                                                 children: "08057605778"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/page.tsx",
-                                                                lineNumber: 1474,
+                                                                lineNumber: 1419,
                                                                 columnNumber: 9
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -4978,19 +5171,19 @@ function Home() {
                                                                 children: "08073552084"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/page.tsx",
-                                                                lineNumber: 1475,
+                                                                lineNumber: 1420,
                                                                 columnNumber: 9
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 1473,
+                                                        lineNumber: 1418,
                                                         columnNumber: 7
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 1457,
+                                                lineNumber: 1402,
                                                 columnNumber: 5
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4998,18 +5191,18 @@ function Home() {
                                                 children: "We hope to celebrate with you"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 1479,
+                                                lineNumber: 1424,
                                                 columnNumber: 5
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/page.tsx",
-                                        lineNumber: 1440,
+                                        lineNumber: 1385,
                                         columnNumber: 3
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 1439,
+                                    lineNumber: 1384,
                                     columnNumber: 1
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -5022,14 +5215,14 @@ function Home() {
                                                     className: "absolute left-1/2 top-0 h-32 w-px -translate-x-1/2 bg-[#C9A227]/30"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 1491,
+                                                    lineNumber: 1436,
                                                     columnNumber: 5
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "absolute bottom-0 left-1/2 h-32 w-px -translate-x-1/2 bg-[#C9A227]/30"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 1493,
+                                                    lineNumber: 1438,
                                                     columnNumber: 5
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5037,7 +5230,7 @@ function Home() {
                                                     children: "✦"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 1495,
+                                                    lineNumber: 1440,
                                                     columnNumber: 5
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5045,13 +5238,13 @@ function Home() {
                                                     children: "✦"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 1499,
+                                                    lineNumber: 1444,
                                                     columnNumber: 5
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/page.tsx",
-                                            lineNumber: 1490,
+                                            lineNumber: 1435,
                                             columnNumber: 3
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5062,7 +5255,7 @@ function Home() {
                                                     children: "A little something"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 1505,
+                                                    lineNumber: 1450,
                                                     columnNumber: 5
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -5070,14 +5263,14 @@ function Home() {
                                                     children: "Gifts & Support"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 1509,
+                                                    lineNumber: 1454,
                                                     columnNumber: 5
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "mx-auto my-7 h-px w-16 bg-[#C9A227]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 1513,
+                                                    lineNumber: 1458,
                                                     columnNumber: 5
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5085,7 +5278,7 @@ function Home() {
                                                     children: "♡"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 1515,
+                                                    lineNumber: 1460,
                                                     columnNumber: 5
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5093,7 +5286,7 @@ function Home() {
                                                     children: "Your presence, prayers and love are already the greatest gift we could ask for."
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 1519,
+                                                    lineNumber: 1464,
                                                     columnNumber: 5
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5104,7 +5297,7 @@ function Home() {
                                                             children: "For those who wish to bless us"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 1525,
+                                                            lineNumber: 1470,
                                                             columnNumber: 7
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5117,7 +5310,7 @@ function Home() {
                                                                             children: "Bank / wallet"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/page.tsx",
-                                                                            lineNumber: 1531,
+                                                                            lineNumber: 1476,
                                                                             columnNumber: 11
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5125,13 +5318,13 @@ function Home() {
                                                                             children: "Fortis mobile"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/page.tsx",
-                                                                            lineNumber: 1532,
+                                                                            lineNumber: 1477,
                                                                             columnNumber: 11
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 1530,
+                                                                    lineNumber: 1475,
                                                                     columnNumber: 9
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5141,7 +5334,7 @@ function Home() {
                                                                             children: "Account name"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/page.tsx",
-                                                                            lineNumber: 1535,
+                                                                            lineNumber: 1480,
                                                                             columnNumber: 11
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5149,13 +5342,13 @@ function Home() {
                                                                             children: "Gideon"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/page.tsx",
-                                                                            lineNumber: 1536,
+                                                                            lineNumber: 1481,
                                                                             columnNumber: 11
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 1534,
+                                                                    lineNumber: 1479,
                                                                     columnNumber: 9
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5165,7 +5358,7 @@ function Home() {
                                                                             children: "Account number"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/page.tsx",
-                                                                            lineNumber: 1539,
+                                                                            lineNumber: 1484,
                                                                             columnNumber: 11
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5176,7 +5369,7 @@ function Home() {
                                                                                     children: "8109239243"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/page.tsx",
-                                                                                    lineNumber: 1541,
+                                                                                    lineNumber: 1486,
                                                                                     columnNumber: 13
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -5186,43 +5379,43 @@ function Home() {
                                                                                     children: "Copy number"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/page.tsx",
-                                                                                    lineNumber: 1542,
+                                                                                    lineNumber: 1487,
                                                                                     columnNumber: 13
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/page.tsx",
-                                                                            lineNumber: 1540,
+                                                                            lineNumber: 1485,
                                                                             columnNumber: 11
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/page.tsx",
-                                                                    lineNumber: 1538,
+                                                                    lineNumber: 1483,
                                                                     columnNumber: 9
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/page.tsx",
-                                                            lineNumber: 1529,
+                                                            lineNumber: 1474,
                                                             columnNumber: 7
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/page.tsx",
-                                                    lineNumber: 1524,
+                                                    lineNumber: 1469,
                                                     columnNumber: 5
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/page.tsx",
-                                            lineNumber: 1504,
+                                            lineNumber: 1449,
                                             columnNumber: 3
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 1489,
+                                    lineNumber: 1434,
                                     columnNumber: 1
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -5235,7 +5428,7 @@ function Home() {
                                                 children: "Spread the love"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 1556,
+                                                lineNumber: 1501,
                                                 columnNumber: 5
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -5243,14 +5436,14 @@ function Home() {
                                                 children: "Share Our Joy"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 1560,
+                                                lineNumber: 1505,
                                                 columnNumber: 5
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "mx-auto my-7 h-px w-16 bg-[#C9A227]"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 1564,
+                                                lineNumber: 1509,
                                                 columnNumber: 5
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5259,14 +5452,14 @@ function Home() {
                                                     "Know someone who should celebrate",
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 1568,
+                                                        lineNumber: 1513,
                                                         columnNumber: 7
                                                     }, this),
                                                     "this beautiful day with us?"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 1566,
+                                                lineNumber: 1511,
                                                 columnNumber: 5
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5277,7 +5470,7 @@ function Home() {
                                                         children: "↗"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 1574,
+                                                        lineNumber: 1519,
                                                         columnNumber: 7
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -5285,7 +5478,7 @@ function Home() {
                                                         children: "Blessing Gabriel & Gideon Ihieve"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 1578,
+                                                        lineNumber: 1523,
                                                         columnNumber: 7
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5293,14 +5486,14 @@ function Home() {
                                                         children: "Wedding Celebration"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 1582,
+                                                        lineNumber: 1527,
                                                         columnNumber: 7
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "mx-auto my-5 h-px w-10 bg-[#C9A227]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 1586,
+                                                        lineNumber: 1531,
                                                         columnNumber: 7
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5308,7 +5501,7 @@ function Home() {
                                                         children: "Wednesday, 23 December 2026"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 1588,
+                                                        lineNumber: 1533,
                                                         columnNumber: 7
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -5328,13 +5521,13 @@ function Home() {
                                                         children: "Share Invitation"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 1592,
+                                                        lineNumber: 1537,
                                                         columnNumber: 7
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 1573,
+                                                lineNumber: 1518,
                                                 columnNumber: 5
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5344,7 +5537,7 @@ function Home() {
                                                         className: "h-px w-10 bg-[#C9A227]/40"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 1612,
+                                                        lineNumber: 1557,
                                                         columnNumber: 7
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5352,20 +5545,20 @@ function Home() {
                                                         children: "✦"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 1614,
+                                                        lineNumber: 1559,
                                                         columnNumber: 7
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         className: "h-px w-10 bg-[#C9A227]/40"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/page.tsx",
-                                                        lineNumber: 1616,
+                                                        lineNumber: 1561,
                                                         columnNumber: 7
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 1611,
+                                                lineNumber: 1556,
                                                 columnNumber: 5
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5373,18 +5566,18 @@ function Home() {
                                                 children: "Thank you for being part of our story."
                                             }, void 0, false, {
                                                 fileName: "[project]/app/page.tsx",
-                                                lineNumber: 1619,
+                                                lineNumber: 1564,
                                                 columnNumber: 5
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/page.tsx",
-                                        lineNumber: 1555,
+                                        lineNumber: 1500,
                                         columnNumber: 3
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.tsx",
-                                    lineNumber: 1554,
+                                    lineNumber: 1499,
                                     columnNumber: 1
                                 }, this)
                             ]
