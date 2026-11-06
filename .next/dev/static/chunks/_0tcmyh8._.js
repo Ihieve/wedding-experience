@@ -674,178 +674,88 @@ __turbopack_context__.s([
     ()=>WeddingMemories
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/styled-jsx/style.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-client] (ecmascript)");
 "use client";
 ;
 ;
+;
 const photos = [
     {
-        src: "/wedding-media/wedding-2026-10-28-10.05.44.webp",
-        alt: "A wedding memory"
+        src: "/wedding-media/_DSC6147.jpg",
+        alt: "Blessing and Gideon in their emerald and gold traditional outfits"
     },
     {
-        src: "/wedding-media/wedding-2026-10-28-10.06.03.webp",
-        alt: "A special moment"
+        src: "/wedding-media/_DSC6150.jpg",
+        alt: "A beautiful traditional portrait of the couple"
     },
     {
-        src: "/wedding-media/wedding-2026-10-28-10.06.14.webp",
-        alt: "A beautiful memory"
+        src: "/wedding-media/_DSC6181.jpg",
+        alt: "Blessing and Gideon celebrating their love"
     },
     {
-        src: "/wedding-media/wedding-2026-10-28-10.06.21.webp",
-        alt: "A moment to remember"
+        src: "/wedding-media/_DSC6189.jpg",
+        alt: "An elegant portrait of the couple"
     },
     {
-        src: "/wedding-media/wedding-2026-10-28-10.06.29.webp",
-        alt: "A special memory"
+        src: "/wedding-media/_DSC6198.jpg",
+        alt: "A close-up portrait of Blessing and Gideon"
     },
     {
-        src: "/wedding-media/wedding-2026-10-28-10.06.40.webp",
-        alt: "A moment together"
+        src: "/wedding-media/_DSC6209.jpg",
+        alt: "A full-length traditional portrait"
     },
     {
-        src: "/wedding-media/wedding-2026-10-28-10.06.45.webp",
-        alt: "A wedding detail"
+        src: "/wedding-media/_DSC6222.jpg",
+        alt: "Blessing in her beautiful traditional attire"
     },
     {
-        src: "/wedding-media/wedding-2026-10-28-10.06.52.webp",
-        alt: "A treasured moment"
+        src: "/wedding-media/_DSC6230.jpg",
+        alt: "The couple in their cultural outfits"
+    },
+    {
+        src: "/wedding-media/_DSC6230BW.jpg",
+        alt: "Black and white romantic portrait of the couple"
+    },
+    {
+        src: "/wedding-media/_DSC6240.jpg",
+        alt: "A special traditional wedding portrait"
+    },
+    {
+        src: "/wedding-media/_DSC6252.jpg",
+        alt: "Blessing in her elegant red traditional outfit"
+    },
+    {
+        src: "/wedding-media/_DSC6286.jpg",
+        alt: "A romantic portrait of Blessing and Gideon"
+    },
+    {
+        src: "/wedding-media/_DSC6304.jpg",
+        alt: "A beautiful solo portrait of Blessing"
+    },
+    {
+        src: "/wedding-media/_DSC6327.jpg",
+        alt: "A portrait of Gideon"
+    },
+    {
+        src: "/wedding-media/_DSC6336.jpg",
+        alt: "A treasured moment from the couple's photoshoot"
+    },
+    {
+        src: "/wedding-media/_DSC6125.jpg",
+        alt: "A special moment captured during the photoshoot"
+    },
+    {
+        src: "/wedding-media/_DSC6131.jpg",
+        alt: "A beautiful portrait from the wedding collection"
+    },
+    {
+        src: "/wedding-media/_DSC6145.jpg",
+        alt: "A romantic memory of the couple"
     },
     {
         src: "/wedding-media/wedding-2026-10-28-10.07.02.webp",
-        alt: "A beautiful detail"
-    },
-    {
-        src: "/wedding-media/wedding-2026-10-28-10.07.09.webp",
-        alt: "A memory captured"
-    },
-    {
-        src: "/wedding-media/wedding-2026-10-28-10.07.15.webp",
-        alt: "A moment worth keeping"
-    },
-    {
-        src: "/wedding-media/extra-memory-01.webp",
-        alt: "Wedding memory 12"
-    },
-    {
-        src: "/wedding-media/extra-memory-02.webp",
-        alt: "Wedding memory 13"
-    },
-    {
-        src: "/wedding-media/extra-memory-03.webp",
-        alt: "Wedding memory 14"
-    },
-    {
-        src: "/wedding-media/extra-memory-04.webp",
-        alt: "Wedding memory 15"
-    },
-    {
-        src: "/wedding-media/extra-memory-05.webp",
-        alt: "Wedding memory 16"
-    },
-    {
-        src: "/wedding-media/extra-memory-06.webp",
-        alt: "Wedding memory 17"
-    },
-    {
-        src: "/wedding-media/extra-memory-07.webp",
-        alt: "Wedding memory 18"
-    },
-    {
-        src: "/wedding-media/extra-memory-08.webp",
-        alt: "Wedding memory 19"
-    },
-    {
-        src: "/wedding-media/extra-memory-09.webp",
-        alt: "Wedding memory 20"
-    },
-    {
-        src: "/wedding-media/extra-memory-10.webp",
-        alt: "Wedding memory 21"
-    },
-    {
-        src: "/wedding-media/extra-memory-11.webp",
-        alt: "Wedding memory 22"
-    },
-    {
-        src: "/wedding-media/extra-memory-12.webp",
-        alt: "Wedding memory 23"
-    },
-    {
-        src: "/wedding-media/extra-memory-13.webp",
-        alt: "Wedding memory 24"
-    },
-    {
-        src: "/wedding-media/extra-memory-14.webp",
-        alt: "Wedding memory 25"
-    },
-    {
-        src: "/wedding-media/extra-memory-15.webp",
-        alt: "Wedding memory 26"
-    },
-    {
-        src: "/wedding-media/extra-memory-16.webp",
-        alt: "Wedding memory 27"
-    },
-    {
-        src: "/wedding-media/extra-memory-17.webp",
-        alt: "Wedding memory 28"
-    },
-    {
-        src: "/wedding-media/extra-memory-18.webp",
-        alt: "Wedding memory 29"
-    },
-    {
-        src: "/wedding-media/extra-memory-19.webp",
-        alt: "Wedding memory 30"
-    },
-    {
-        src: "/wedding-media/extra-memory-20.webp",
-        alt: "Wedding memory 31"
-    },
-    {
-        src: "/wedding-media/extra-memory-21.webp",
-        alt: "Wedding memory 32"
-    },
-    {
-        src: "/wedding-media/extra-memory-22.webp",
-        alt: "Wedding memory 33"
-    },
-    {
-        src: "/wedding-media/extra-memory-23.webp",
-        alt: "Wedding memory 34"
-    },
-    {
-        src: "/wedding-media/extra-memory-24.webp",
-        alt: "Wedding memory 35"
-    },
-    {
-        src: "/wedding-media/extra-memory-25.webp",
-        alt: "Wedding memory 36"
-    },
-    {
-        src: "/wedding-media/extra-memory-26.webp",
-        alt: "Wedding memory 37"
-    },
-    {
-        src: "/wedding-media/extra-memory-27.webp",
-        alt: "Wedding memory 38"
-    },
-    {
-        src: "/wedding-media/extra-memory-28.webp",
-        alt: "Wedding memory 39"
-    },
-    {
-        src: "/wedding-media/extra-memory-29.webp",
-        alt: "Wedding memory 40"
-    },
-    {
-        src: "/wedding-media/extra-memory-30.webp",
-        alt: "Wedding memory 41"
-    },
-    {
-        src: "/wedding-media/extra-memory-31.webp",
-        alt: "Wedding memory 42"
+        alt: "A close-up of the couple's hands and engagement ring"
     }
 ];
 const videos = [
@@ -861,61 +771,62 @@ const videos = [
 function WeddingMemories() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         id: "memories",
-        className: "relative isolate overflow-hidden bg-[#F8F3E9] px-5 py-20 sm:px-8 sm:py-28",
+        className: "jsx-ae73ce15ac755dd0" + " " + "relative isolate overflow-hidden bg-[#F8F3E9] px-5 py-20 sm:px-8 sm:py-28",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 "aria-hidden": "true",
-                className: "pointer-events-none absolute inset-0 -z-20 overflow-hidden",
+                className: "jsx-ae73ce15ac755dd0" + " " + "pointer-events-none absolute inset-0 -z-20 overflow-hidden",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("video", {
-                    className: "h-full w-full object-cover opacity-25",
                     autoPlay: true,
                     muted: true,
                     loop: true,
                     playsInline: true,
                     preload: "metadata",
                     tabIndex: -1,
+                    className: "jsx-ae73ce15ac755dd0" + " " + "h-full w-full object-cover opacity-25",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("source", {
                         src: "/wedding-media/lv_0_20261028144344.mp4",
-                        type: "video/mp4"
+                        type: "video/mp4",
+                        className: "jsx-ae73ce15ac755dd0"
                     }, void 0, false, {
                         fileName: "[project]/app/components/WeddingMemories.tsx",
-                        lineNumber: 60,
+                        lineNumber: 115,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/components/WeddingMemories.tsx",
-                    lineNumber: 59,
+                    lineNumber: 106,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/components/WeddingMemories.tsx",
-                lineNumber: 58,
+                lineNumber: 102,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 "aria-hidden": "true",
-                className: "pointer-events-none absolute inset-0 -z-10 bg-[#FFF9EF]/85 dark:bg-[#10251D]/80"
+                className: "jsx-ae73ce15ac755dd0" + " " + "pointer-events-none absolute inset-0 -z-10 bg-[#FFF9EF]/85 dark:bg-[#10251D]/80"
             }, void 0, false, {
                 fileName: "[project]/app/components/WeddingMemories.tsx",
-                lineNumber: 63,
+                lineNumber: 122,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "pointer-events-none absolute -left-24 top-20 h-64 w-64 rounded-full bg-[#064E3B]/[0.06] blur-3xl"
+                className: "jsx-ae73ce15ac755dd0" + " " + "pointer-events-none absolute -left-24 top-20 h-64 w-64 rounded-full bg-[#064E3B]/[0.06] blur-3xl"
             }, void 0, false, {
                 fileName: "[project]/app/components/WeddingMemories.tsx",
-                lineNumber: 64,
+                lineNumber: 127,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "pointer-events-none absolute -right-24 bottom-10 h-64 w-64 rounded-full bg-[#C9A227]/[0.10] blur-3xl"
+                className: "jsx-ae73ce15ac755dd0" + " " + "pointer-events-none absolute -right-24 bottom-10 h-64 w-64 rounded-full bg-[#C9A227]/[0.10] blur-3xl"
             }, void 0, false, {
                 fileName: "[project]/app/components/WeddingMemories.tsx",
-                lineNumber: 65,
+                lineNumber: 129,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "relative mx-auto max-w-6xl",
+                className: "jsx-ae73ce15ac755dd0" + " " + "relative mx-auto max-w-6xl",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
                         initial: {
@@ -935,44 +846,44 @@ function WeddingMemories() {
                         className: "mx-auto max-w-2xl text-center",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-[10px] uppercase tracking-[0.42em] text-[#064E3B]",
+                                className: "jsx-ae73ce15ac755dd0" + " " + "text-[10px] uppercase tracking-[0.42em] text-[#064E3B]",
                                 children: "Little moments, forever memories"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/WeddingMemories.tsx",
-                                lineNumber: 68,
+                                lineNumber: 140,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                className: "mt-4 font-serif text-4xl text-[#4B2E20] sm:text-5xl",
+                                className: "jsx-ae73ce15ac755dd0" + " " + "mt-4 font-serif text-4xl text-[#4B2E20] sm:text-5xl",
                                 children: "Our Memories"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/WeddingMemories.tsx",
-                                lineNumber: 69,
+                                lineNumber: 144,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "mx-auto my-6 h-px w-16 bg-[#C9A227]"
+                                className: "jsx-ae73ce15ac755dd0" + " " + "mx-auto my-6 h-px w-16 bg-[#C9A227]"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/WeddingMemories.tsx",
-                                lineNumber: 70,
+                                lineNumber: 148,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "font-serif text-base leading-7 text-[#4B2E20]/70 sm:text-lg",
+                                className: "jsx-ae73ce15ac755dd0" + " " + "font-serif text-base leading-7 text-[#4B2E20]/70 sm:text-lg",
                                 children: "A collection of moments and videos we want to share with the people we love."
                             }, void 0, false, {
                                 fileName: "[project]/app/components/WeddingMemories.tsx",
-                                lineNumber: 71,
+                                lineNumber: 150,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/WeddingMemories.tsx",
-                        lineNumber: 67,
+                        lineNumber: 133,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "mt-12 grid gap-5 md:grid-cols-2",
+                        className: "jsx-ae73ce15ac755dd0" + " " + "mt-12 grid gap-5 md:grid-cols-2",
                         children: videos.map((video, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].article, {
                                 initial: {
                                     opacity: 0,
@@ -994,140 +905,146 @@ function WeddingMemories() {
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("video", {
                                         controls: true,
                                         playsInline: true,
-                                        preload: "auto",
-                                        className: "aspect-video w-full rounded-xl bg-[#1D2B24] object-contain",
+                                        preload: "metadata",
                                         "aria-label": video.title,
                                         onError: (event)=>{
                                             console.error(`Unable to load wedding video: ${video.src}`, event.currentTarget.error);
                                         },
+                                        className: "jsx-ae73ce15ac755dd0" + " " + "aspect-video w-full rounded-xl bg-[#1D2B24] object-contain",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("source", {
                                                 src: video.src,
-                                                type: "video/mp4"
+                                                type: "video/mp4",
+                                                className: "jsx-ae73ce15ac755dd0"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/components/WeddingMemories.tsx",
-                                                lineNumber: 78,
+                                                lineNumber: 183,
                                                 columnNumber: 17
                                             }, this),
                                             "Your browser does not support embedded video."
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/components/WeddingMemories.tsx",
-                                        lineNumber: 77,
+                                        lineNumber: 170,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "px-2 pb-1 pt-4 font-serif text-xl text-[#4B2E20]",
+                                        className: "jsx-ae73ce15ac755dd0" + " " + "px-2 pb-1 pt-4 font-serif text-xl text-[#4B2E20]",
                                         children: video.title
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/WeddingMemories.tsx",
-                                        lineNumber: 81,
+                                        lineNumber: 187,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, video.src, true, {
                                 fileName: "[project]/app/components/WeddingMemories.tsx",
-                                lineNumber: 76,
+                                lineNumber: 159,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/app/components/WeddingMemories.tsx",
-                        lineNumber: 74,
+                        lineNumber: 157,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "mt-16 flex items-center gap-4",
+                        className: "jsx-ae73ce15ac755dd0" + " " + "mt-16 flex items-center gap-4",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "h-px flex-1 bg-[#C9A227]/50"
+                                className: "jsx-ae73ce15ac755dd0" + " " + "h-px flex-1 bg-[#C9A227]/50"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/WeddingMemories.tsx",
-                                lineNumber: 87,
+                                lineNumber: 196,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                className: "font-serif text-2xl text-[#4B2E20] sm:text-3xl",
+                                className: "jsx-ae73ce15ac755dd0" + " " + "font-serif text-2xl text-[#4B2E20] sm:text-3xl",
                                 children: "Captured moments"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/WeddingMemories.tsx",
-                                lineNumber: 88,
+                                lineNumber: 198,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "h-px flex-1 bg-[#C9A227]/50"
+                                className: "jsx-ae73ce15ac755dd0" + " " + "h-px flex-1 bg-[#C9A227]/50"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/WeddingMemories.tsx",
-                                lineNumber: 89,
+                                lineNumber: 202,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/WeddingMemories.tsx",
-                        lineNumber: 86,
+                        lineNumber: 195,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "wedding-memory-marquee mt-8",
                         "aria-label": "Continuously sliding wedding photo gallery",
+                        className: "jsx-ae73ce15ac755dd0" + " " + "wedding-memory-marquee mt-8",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "wedding-memory-track",
+                            className: "jsx-ae73ce15ac755dd0" + " " + "wedding-memory-track",
                             children: [
                                 ...photos,
                                 ...photos
                             ].map((photo, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("figure", {
-                                    className: "wedding-memory-slide",
+                                    className: "jsx-ae73ce15ac755dd0" + " " + "wedding-memory-slide",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                         src: photo.src,
                                         alt: photo.alt,
-                                        loading: index < 8 ? "eager" : "lazy",
+                                        loading: index < photos.length ? "eager" : "lazy",
                                         decoding: "async",
-                                        draggable: false
+                                        draggable: false,
+                                        className: "jsx-ae73ce15ac755dd0"
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/WeddingMemories.tsx",
-                                        lineNumber: 96,
+                                        lineNumber: 216,
                                         columnNumber: 17
                                     }, this)
                                 }, `${photo.src}-${index}`, false, {
                                     fileName: "[project]/app/components/WeddingMemories.tsx",
-                                    lineNumber: 95,
+                                    lineNumber: 212,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/app/components/WeddingMemories.tsx",
-                            lineNumber: 93,
+                            lineNumber: 210,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/components/WeddingMemories.tsx",
-                        lineNumber: 92,
+                        lineNumber: 206,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "mt-4 text-center text-xs text-[#4B2E20]/55",
+                        className: "jsx-ae73ce15ac755dd0" + " " + "mt-4 text-center text-xs text-[#4B2E20]/55",
                         children: "A continuous stream of our favorite moments · Swipe to explore"
                     }, void 0, false, {
                         fileName: "[project]/app/components/WeddingMemories.tsx",
-                        lineNumber: 107,
+                        lineNumber: 228,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "mt-5 text-center text-xs text-[#4B2E20]/55",
+                        className: "jsx-ae73ce15ac755dd0" + " " + "mt-5 text-center text-xs text-[#4B2E20]/55",
                         children: "With love, Blessing & Gideon · 23 December 2026"
                     }, void 0, false, {
                         fileName: "[project]/app/components/WeddingMemories.tsx",
-                        lineNumber: 108,
+                        lineNumber: 232,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/WeddingMemories.tsx",
-                lineNumber: 66,
+                lineNumber: 131,
                 columnNumber: 7
-            }, this)
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                id: "ae73ce15ac755dd0",
+                children: ".wedding-memory-track{animation-duration:100s!important;animation-timing-function:linear!important}.wedding-memory-marquee:hover .wedding-memory-track{animation-play-state:paused}.wedding-memory-slide img{-webkit-user-select:none;user-select:none;-webkit-user-drag:none}@media (prefers-reduced-motion:reduce){.wedding-memory-track{animation:none!important}}"
+            }, void 0, false, void 0, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/WeddingMemories.tsx",
-        lineNumber: 57,
+        lineNumber: 97,
         columnNumber: 5
     }, this);
 }
@@ -5205,7 +5122,7 @@ function Home() {
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                             className: "mt-1 text-lg text-[#FFFDF8]",
-                                                                            children: "PalmPay"
+                                                                            children: "Fortis mobile"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/page.tsx",
                                                                             lineNumber: 1532,
@@ -5256,7 +5173,7 @@ function Home() {
                                                                             children: [
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                                     className: "text-xl tracking-wider text-[#FFFDF8]",
-                                                                                    children: "7054919985"
+                                                                                    children: "8109239243"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/page.tsx",
                                                                                     lineNumber: 1541,
@@ -5264,7 +5181,7 @@ function Home() {
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                                     type: "button",
-                                                                                    onClick: ()=>navigator.clipboard?.writeText("7054919985"),
+                                                                                    onClick: ()=>navigator.clipboard?.writeText("8109239243"),
                                                                                     className: "rounded-sm border border-[#C9A227]/60 px-4 py-2 text-[9px] uppercase tracking-[0.2em] text-[#C9A227] transition hover:bg-[#C9A227]/10",
                                                                                     children: "Copy number"
                                                                                 }, void 0, false, {

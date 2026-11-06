@@ -1529,7 +1529,7 @@ export default function Home() {
       <div className="mt-5 space-y-4 text-left">
         <div>
           <p className="text-[9px] uppercase tracking-[0.25em] text-[#FFFDF8]/55">Bank / wallet</p>
-          <p className="mt-1 text-lg text-[#FFFDF8]">PalmPay</p>
+          <p className="mt-1 text-lg text-[#FFFDF8]">Fortis mobile</p>
         </div>
         <div>
           <p className="text-[9px] uppercase tracking-[0.25em] text-[#FFFDF8]/55">Account name</p>
@@ -1538,8 +1538,8 @@ export default function Home() {
         <div>
           <p className="text-[9px] uppercase tracking-[0.25em] text-[#FFFDF8]/55">Account number</p>
           <div className="mt-1 flex items-center justify-between gap-3">
-            <p className="text-xl tracking-wider text-[#FFFDF8]">7054919985</p>
-            <button type="button" onClick={() => navigator.clipboard?.writeText("7054919985")} className="rounded-sm border border-[#C9A227]/60 px-4 py-2 text-[9px] uppercase tracking-[0.2em] text-[#C9A227] transition hover:bg-[#C9A227]/10">Copy number</button>
+            <p className="text-xl tracking-wider text-[#FFFDF8]">8109239243</p>
+            <button type="button" onClick={() => navigator.clipboard?.writeText("8109239243")} className="rounded-sm border border-[#C9A227]/60 px-4 py-2 text-[9px] uppercase tracking-[0.2em] text-[#C9A227] transition hover:bg-[#C9A227]/10">Copy number</button>
           </div>
         </div>
       </div>
